@@ -13,7 +13,7 @@ w.emit("msg",{script:'gl=c.getContext("webgl")'})
 setInterval(()=>{
 w.emit("msg",{script:'c.width=innerWidth'})
 w.emit("msg",{script:'c.height=innerHeight'})
-w.emit("msg",{script:'gl.clearColor(0,255,0,1)'})
+w.emit("msg",{script:'gl.clearColor(0,0,255,1)'})
 w.emit("msg",{script:'gl.clear(gl.COLOR_BUFFER_BIT)'})
 },1)
 })
