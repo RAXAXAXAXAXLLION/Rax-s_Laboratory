@@ -6,6 +6,7 @@ o.write('<script>io().on("msg",(e)=>{eval(e.script)})</script>')
 o.end()
 }).listen(process.env.PORT||3000,()=>{console.log("Server listening.")})
 ).on("connection",(w)=>{
+w.emit("msg",{script:'document.body.style.margin="0"'})
 w.emit("msg",{script:'c=document.createElement("canvas")'})
 w.emit("msg",{script:'document.body.appendChild(c)'})
 w.emit("msg",{script:'gl=c.getContext("webgl")'})
