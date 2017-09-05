@@ -13,6 +13,6 @@ setInterval(()=>{
 w.emit("msg",{script:'c.width=innerWidth'})
 w.emit("msg",{script:'c.height=innerHeight'})
 w.emit("msg",{script:'gl.clearColor(0,0,0,1)'})
-w.emit("msg",{script:'gl.clear()'})
+w.emit("msg",{script:'gl.clear(GL_COLOR_BUFFER_BIT)'})
 },1)
 })
