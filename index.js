@@ -23,5 +23,5 @@ w.emit("msg",{script:'new Uint8Array(img.data.buffer)[2+'+x+'*4+'+y+'*4*32]='+w.
 w.emit("msg",{script:'new Uint8Array(img.data.buffer)[3+'+x+'*4+'+y+'*4*32]=255'})
 }}
 w.emit("msg",{script:'ctx.putImageData(img,0,0)'})
-},500)
+},1000)
 })
