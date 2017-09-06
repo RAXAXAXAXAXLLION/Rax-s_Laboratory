@@ -13,7 +13,7 @@ w.emit("msg",{script:'ctx=c.getContext("2d")'})
 w.emit("msg",{script:'img=ctx.getImageData(0,0,8000,8000)'})
 setInterval(()=>{
 w.emit("msg",{script:'c.width=innerWidth'})
-w.emit("msg",{script:'c.height=innerHeight'})
+w.emit("msg",{script:'c.height=innerHeight'})/*
 for(x=0;x<8000;x++){
 for(y=0;y<8000;y++){
 w.emit("msg",{script:'new Uint8Array(img.data.buffer)[0+'+x+'*4+'+y+'*4*8000]=255'})
@@ -21,6 +21,6 @@ w.emit("msg",{script:'new Uint8Array(img.data.buffer)[1+'+x+'*4+'+y+'*4*8000]=0'
 w.emit("msg",{script:'new Uint8Array(img.data.buffer)[2+'+x+'*4+'+y+'*4*8000]=0'})
 w.emit("msg",{script:'new Uint8Array(img.data.buffer)[3+'+x+'*4+'+y+'*4*8000]=255'})
 }}
-w.emit("msg",{script:'ctx.putImageData(img,0,0)'})
+w.emit("msg",{script:'ctx.putImageData(img,0,0)'})*/
 },1000)
 })
