@@ -14,8 +14,8 @@ w.emit("msg",{script:'ctx=c.getContext("2d")'})
 setInterval(()=>{
 w.emit("msg",{script:'c.width=innerWidth'})
 w.emit("msg",{script:'c.height=innerHeight'})
-for(x=0;x<8000;x++){
-for(y=0;y<8000;y++){
+for(x=0;x<32;x++){
+for(y=0;y<32;y++){
 w.emit("msg",{script:'ctx.fillStyle="rgba('+w.c.r+','+w.c.g+','+w.c.b+',1)"'})
 w.emit("msg",{script:'ctx.fillRect('+x+','+y+',1,1)'})
 }}
