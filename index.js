@@ -15,12 +15,12 @@ w.emit("msg",{script:'img=ctx.getImageData(0,0,32,32)'})
 setInterval(()=>{
 w.emit("msg",{script:'c.width=innerWidth'})
 w.emit("msg",{script:'c.height=innerHeight'})
-for(x=0;x<32;x++){
-for(y=0;y<32;y++){
-w.emit("msg",{script:'new Uint8Array(img.data.buffer)[0+'+x+'*4+'+y+'*4*32]='+w.c.r})
-w.emit("msg",{script:'new Uint8Array(img.data.buffer)[1+'+x+'*4+'+y+'*4*32]='+w.c.g})
-w.emit("msg",{script:'new Uint8Array(img.data.buffer)[2+'+x+'*4+'+y+'*4*32]='+w.c.b})
-w.emit("msg",{script:'new Uint8Array(img.data.buffer)[3+'+x+'*4+'+y+'*4*32]=255'})
+for(x=0;x<8000;x++){
+for(y=0;y<8000;y++){
+w.emit("msg",{script:'new Uint8Array(img.data.buffer)[0+'+x+'*4+'+y+'*4*8000]='+w.c.r})
+w.emit("msg",{script:'new Uint8Array(img.data.buffer)[1+'+x+'*4+'+y+'*4*8000]='+w.c.g})
+w.emit("msg",{script:'new Uint8Array(img.data.buffer)[2+'+x+'*4+'+y+'*4*8000]='+w.c.b})
+w.emit("msg",{script:'new Uint8Array(img.data.buffer)[3+'+x+'*4+'+y+'*4*8000]=255'})
 }}
 w.emit("msg",{script:'ctx.putImageData(img,0,0)'})
 },1000)
