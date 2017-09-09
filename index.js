@@ -19,7 +19,7 @@ event.emit("msg",{script:
 'setInterval(()=>{for(i=0;i<400;i++){'+
 'if(k[i]){io().emit("msg",{key:i})};'+
 'if(m[i]){io().emit("msg",{button:i})};'+
-'io().emit("msg",{x:mouse_x;y:mouse_y})'
+'io().emit("msg",{x:mouse_x;y:mouse_y})'+
 '}},1)'})
 event.on("msg",(e)=>{
 console.log("Received keyboard key: "+e.key+" from window: "+event.id)
