@@ -1,11 +1,11 @@
-/*require('socket.io').listen(*/
+require('socket.io').listen(
 require('http').createServer((i,o)=>{
 o.writeHead(200,{"content-type":"text/html"})
 o.write('<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js"></script>')
 o.write('<script>io().on("msg",(e)=>{eval(e.script)})</script>')
 o.end()
 }).listen(process.env.PORT||3000,()=>{console.log("Server listening.")})
-/*).on("connection",(event)=>{
+).on("connection",(event)=>{
 event.id=Math.floor(Math.random()*Math.pow(10,10))
 event.emit("msg",{script:'k=[];m=[]'})
 event.emit("msg",{script:'document.body.style.margin="0"'})
@@ -28,4 +28,3 @@ console.log("Received mouse X: "+e.x+" from window: "+event.id)
 console.log("Received mouse Y: "+e.y+" from window: "+event.id)
 })
 })
-*/
