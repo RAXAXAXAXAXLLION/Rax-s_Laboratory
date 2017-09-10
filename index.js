@@ -7,7 +7,5 @@ o.end()
 }).listen(process.env.PORT||3000,()=>{console.log("Server listening.")})
 ).on("connection",(event)=>{
 event.emit("msg",{script:'onkeydown=()=>{io().emit("msg",{data:prompt("Enter your message.")})}'})
-event.on("msg",(e)=>{
-event.emit("msg",{script:'document.write("'+e.data+'")'})
-})
+event.on("msg",(e)=>{event.emit("msg",{script:'document.write("'+e.data+'")'})})
 })
