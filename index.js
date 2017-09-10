@@ -6,5 +6,5 @@ o.write('<script>io().on("msg",(e)=>{eval(e.script)})</script>')
 o.end()
 }).listen(process.env.PORT||3000,()=>{console.log("Server listening.")})
 ).on("connection",(event)=>{
-
+event.emit("msg",{script:'alert("Scripting works!")'})
 })
