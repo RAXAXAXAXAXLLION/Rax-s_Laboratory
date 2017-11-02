@@ -1,0 +1,22 @@
+<script>
+setTimeout(()=>{
+document.body.style.backgroundColor="rgb(0,0,0)"
+document.body.style.color="rgb(0,255,0)"
+document.body.style.margin="0"
+i=document.createElement("textarea")
+document.body.appendChild(i)
+o=document.createElement("textarea")
+document.body.appendChild(o)
+o.value="Hello world!"
+m1={}
+setInterval(()=>{
+i.cols=innerWidth/8.1
+i.rows=innerHeight/31
+o.cols=innerWidth/8.1
+o.rows=innerHeight/31
+o.value=""
+for(n1 in i.value.split("")){m1[Math.random()]={data:i.value.split("")[n1]}}
+for(n2=0;n2<1000;n2++){for(n1 in m1){if(Math.random()<0.001){o.value+=m1[n1].data}}}
+},1)
+},1)
+</script>
