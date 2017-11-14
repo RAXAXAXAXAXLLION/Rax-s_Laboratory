@@ -56,10 +56,10 @@ if(Math.pow((this.x-view.x)*(this.x-view.x)+(this.y-view.y)*(this.y-view.y),0.5)
 grd=ctx.createRadialGradient(
 32*32*(this.x-view.x)/(zoom*zoom)+cvs.width/2,
 32*32*(this.y-view.y)/(zoom*zoom)+cvs.height/2,
-32*32*16/(zoom*zoom),32*32*16/(zoom*zoom),0,0,2*Math.PI,
+32*32*16/(zoom*zoom),
 32*32*(this.x-view.x)/(zoom*zoom)+cvs.width/2,
 32*32*(this.y-view.y)/(zoom*zoom)+cvs.height/2,
-32*32*32/(zoom*zoom),32*32*16/(zoom*zoom),0,0,2*Math.PI)
+32*32*32/(zoom*zoom))
 grd.addColorStop(0,"rgba(0,127,255,1)")
 grd.addColorStop(1,"rgba(0,127,255,0)")
 ctx.fillStyle=grd
