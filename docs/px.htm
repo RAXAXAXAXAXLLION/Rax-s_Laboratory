@@ -29,7 +29,7 @@ c.width=320
 c.height=320
 for(x=0;x<c.width;x++){
 for(y=0;y<c.height;y++){
-ctx.fillStyle="rgb("+r.value+","+g.value+","+b.value+")"
+ctx.fillStyle="rgb("+eval(r.value)+","+eval(g.value)+","+eval(b.value)+")"
 ctx.fillRect(x,y,1,1)
 }}
 },1)
