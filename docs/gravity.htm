@@ -21,7 +21,7 @@ setInterval(function(){
 cvs.width=innerWidth
 cvs.height=innerHeight
 ctx.fillStyle="rgba(0,0,0,1)"
-ctx.fillRect(0,0,c.width,c.height)
+ctx.fillRect(0,0,cvs.width,cvs.height)
 for(id in planet){planet[id].update()}
 view.update()
 },1)
