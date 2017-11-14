@@ -15,11 +15,11 @@ if(e.keyCode==67){zoom=prompt("Enter the value for the camera zoom.")}
 }
 ctx=document.getElementById("c").getContext("2d")
 cvs=document.getElementById("c")
+document.body.style.margin="0"
 onkeyup=onkeydown=function(e){k[e.keyCode]=e.type=="keydown"}
 setInterval(function(){
-cvs.width=window.innerWidth-32
-cvs.height=window.innerHeight-32
-ctx.clearRect(0,0,1280,640)
+cvs.width=innerWidth
+cvs.height=innerHeight
 for(id in planet){planet[id].update()}
 view.update()
 },1)
@@ -53,13 +53,11 @@ planet[id]={t:10,x:view.x,y:view.y,xs:view.xs,ys:view.ys,update:function(){
 this.x+=this.xs
 this.y+=this.ys
 if(Math.pow((this.x-view.x)*(this.x-view.x)+(this.y-view.y)*(this.y-view.y),0.5)<(zoom*zoom)*768/(32*32)){
-ctx.beginPath()
-ctx.ellipse(32*32*(this.x-view.x)/(zoom*zoom)+cvs.width/2,
-32*32*(this.y-view.y)/(zoom*zoom)+cvs.height/2,
-32*32*16/(zoom*zoom),32*32*16/(zoom*zoom),0,0,2*Math.PI)
-ctx.closePath()
+ctx.createRadialGradient(this.x,this.y,32,this.x,this.y,64);
+grd.addColorStop(0,"rgba(0,127,255,1)");
+grd.addColorStop(1,"rgba(0,127,255,0)")
 ctx.fillStyle="rgba(0,127,255,1)"
-ctx.fill()
+ctx.fillRect(0,0,c.width,c.height)
 }
 for(id in planet){
 if(Math.pow((this.x-planet[id].x)*(this.x-planet[id].x)+(this.y-planet[id].y)*(this.y-planet[id].y),0.5)>1){
