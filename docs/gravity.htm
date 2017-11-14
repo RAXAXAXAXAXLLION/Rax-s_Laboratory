@@ -53,10 +53,10 @@ planet[id]={t:10,x:view.x,y:view.y,xs:view.xs,ys:view.ys,update:function(){
 this.x+=this.xs
 this.y+=this.ys
 if(Math.pow((this.x-view.x)*(this.x-view.x)+(this.y-view.y)*(this.y-view.y),0.5)<(zoom*zoom)*768/(32*32)){
-ctx.createRadialGradient(this.x,this.y,32,this.x,this.y,64);
-grd.addColorStop(0,"rgba(0,127,255,1)");
+grd=ctx.createRadialGradient(this.x,this.y,32,this.x,this.y,64)
+grd.addColorStop(0,"rgba(0,127,255,1)")
 grd.addColorStop(1,"rgba(0,127,255,0)")
-ctx.fillStyle="rgba(0,127,255,1)"
+ctx.fillStyle=grd
 ctx.fillRect(0,0,c.width,c.height)
 }
 for(id in planet){
