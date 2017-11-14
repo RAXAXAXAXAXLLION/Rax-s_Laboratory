@@ -65,7 +65,7 @@ grd=ctx.createRadialGradient(
 grd.addColorStop(0,"rgba(0,127,255,1)")
 grd.addColorStop(1,"rgba(0,127,255,0)")
 ctx.fillStyle=grd
-ctx.fillRect(0,0,c.width,c.height)
+ctx.fillRect(0,0,cvs.width,cvs.height)
 }
 for(id in planet){
 if(Math.pow((this.x-planet[id].x)*(this.x-planet[id].x)+(this.y-planet[id].y)*(this.y-planet[id].y),0.5)>1){
