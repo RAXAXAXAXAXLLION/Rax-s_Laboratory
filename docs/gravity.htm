@@ -8,14 +8,14 @@ cs=20
 framecount=0
 interval=2000
 planet={}
+ctx=document.getElementById("c").getContext("2d")
+cvs=document.getElementById("c")
+document.body.style.margin="0"
 document.onkeydown=function(e){
 if(e.keyCode==69){cs=prompt("Enter the value of the Cross Acceleration.")}
 if(e.keyCode==68){interval=prompt("Enter the value for the frecuency of Atom Spawning.")}
 if(e.keyCode==67){zoom=prompt("Enter the value for the camera zoom.")}
 }
-ctx=document.getElementById("c").getContext("2d")
-cvs=document.getElementById("c")
-document.body.style.margin="0"
 onkeyup=onkeydown=function(e){k[e.keyCode]=e.type=="keydown"}
 setInterval(function(){
 cvs.width=innerWidth
