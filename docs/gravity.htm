@@ -41,6 +41,9 @@ if(k[37]){this.xs-=cs/1000*(zoom*zoom)/(32*32)}
 if(k[38]){this.ys-=cs/1000*(zoom*zoom)/(32*32)}
 if(k[39]){this.xs+=cs/1000*(zoom*zoom)/(32*32)}
 if(k[40]){this.ys+=cs/1000*(zoom*zoom)/(32*32)}
+if(interval<1){interval++}
+if(zoom<16){zoom++}
+if(cs<1){cs++}
 if(k[65]){if(interval>1){interval--}}
 if(k[83]){interval++}
 if(k[90]){if(zoom>16){zoom--}}
