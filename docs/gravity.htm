@@ -1,15 +1,15 @@
-<body bgcolor="#000000">
-<canvas id="c" width="1280" height="640" style="border:4px solid #FFFFFF">Your browser doesn't support HTML5 canvas.</canvas>
 <script>
+setTimeout(()=>{
 k=[]
 id=0
-zoom=32
 cs=20
+zoom=32
+planet={}
 framecount=0
 interval=2000
-planet={}
-ctx=document.getElementById("c").getContext("2d")
-cvs=document.getElementById("c")
+cvs=document.createElement("c")
+document.body.appendChild(cvs)
+ctx=cvs.getContext("2d")
 document.body.style.margin="0"
 document.onkeydown=function(e){
 if(e.keyCode==69){cs=prompt("Enter the value of the Cross Acceleration.")}
@@ -20,6 +20,8 @@ onkeyup=onkeydown=function(e){k[e.keyCode]=e.type=="keydown"}
 setInterval(function(){
 cvs.width=innerWidth
 cvs.height=innerHeight
+ctx.fillStyle="rgba(0,0,0,1)"
+ctx.fillRect(0,0,c.width,c.height)
 for(id in planet){planet[id].update()}
 view.update()
 },1)
@@ -82,5 +84,5 @@ this.ys+=this.t*0.0001*(this.y-planet[id].y)/(Math.pow((this.x-planet[id].x)*(th
 this.xs-=0.01*(this.x-planet[id].x)/(Math.pow((this.x-planet[id].x)*(this.x-planet[id].x)+(this.y-planet[id].y)*(this.y-planet[id].y),1))
 this.ys-=0.01*(this.y-planet[id].y)/(Math.pow((this.x-planet[id].x)*(this.x-planet[id].x)+(this.y-planet[id].y)*(this.y-planet[id].y),1))
 }}}}}}}
+},1)
 </script>
-</body>
