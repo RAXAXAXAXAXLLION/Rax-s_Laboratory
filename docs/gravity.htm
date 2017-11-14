@@ -12,9 +12,9 @@ cvs=document.createElement("canvas")
 document.body.appendChild(cvs)
 ctx=cvs.getContext("2d")
 document.onkeydown=function(e){
-if(e.keyCode==69){cs=prompt("Enter the value of the Cross Acceleration.")}
-if(e.keyCode==68){interval=prompt("Enter the value for the frecuency of Atom Spawning.")}
-if(e.keyCode==67){zoom=prompt("Enter the value for the camera zoom.")}
+if(e.keyCode==69){cs=eval(prompt("Enter the value of the Cross Acceleration."))}
+if(e.keyCode==68){interval=eval(prompt("Enter the value for the frecuency of Atom Spawning."))}
+if(e.keyCode==67){zoom=eval(prompt("Enter the value for the camera zoom."))}
 }
 onkeyup=onkeydown=function(e){k[e.keyCode]=e.type=="keydown"}
 setInterval(function(){
