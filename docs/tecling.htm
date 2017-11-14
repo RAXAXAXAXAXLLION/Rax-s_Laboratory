@@ -1,6 +1,7 @@
 <script>
-setTimeout(()=>{
 s=0
+m=0
+setTimeout(()=>{
 document.body.style.margin="0"
 c=document.createElement("canvas")
 document.body.appendChild(c)
@@ -18,11 +19,12 @@ ctx.lineWidth="2"
 ctx.strokeStyle="black"
 ctx.strokeText("Best: "+s,8,32)
 ctx.fillStyle="white"
-ctx.fillText("Score: "+s,8,64+16)
+ctx.fillText("Score: "+m,8,64+16)
 ctx.lineWidth="2"
 ctx.strokeStyle="black"
-ctx.strokeText("Best: "+s,8,64+16)
+ctx.strokeText("Best: "+m,8,64+16)
 if(0<s){s--}
+if(m<s){m=s}
 },1)
 },1)
 </script>
