@@ -7,10 +7,10 @@ zoom=32
 planet={}
 framecount=0
 interval=2000
+document.body.style.margin="0"
 cvs=document.createElement("canvas")
 document.body.appendChild(cvs)
 ctx=cvs.getContext("2d")
-document.body.style.margin="0"
 document.onkeydown=function(e){
 if(e.keyCode==69){cs=prompt("Enter the value of the Cross Acceleration.")}
 if(e.keyCode==68){interval=prompt("Enter the value for the frecuency of Atom Spawning.")}
