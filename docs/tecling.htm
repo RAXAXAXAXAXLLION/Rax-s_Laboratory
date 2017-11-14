@@ -1,0 +1,25 @@
+<script>
+setTimeout(()=>{
+document.body.style.margin="0"
+c=document.createElement("canvas")
+document.body.appendChild(c)
+ctx=c.getContext("2d")
+onkeydown=()=>{s++}
+setInterval(()=>{
+c.width=innerWidth
+c.height=innerHeight
+ctx.font="24px Impact"
+ctx.fillStyle="white"
+ctx.fillText("Score: "+s,0,0)
+ctx.lineWidth="4"
+ctx.strokeStyle="black"
+ctx.strokeText("Best: "+s,0,0)
+ctx.fillStyle="white"
+ctx.fillText("Score: "+s,0,32)
+ctx.lineWidth="4"
+ctx.strokeStyle="black"
+ctx.strokeText("Best: "+s,0,32)
+if(0<s){s--}
+},1)
+},1)
+</script>
