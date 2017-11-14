@@ -1,0 +1,82 @@
+<body bgcolor="#000000">
+<canvas id="c" width="1280" height="640" style="border:4px solid #FFFFFF">Your browser doesn't support HTML5 canvas.</canvas>
+<script>
+k=[]
+id=0
+zoom=32
+cs=20
+framecount=0
+interval=2000
+planet={}
+document.onkeydown=function(e){
+if(e.keyCode==69){cs=prompt("Enter the value of the Cross Acceleration.")}
+if(e.keyCode==68){interval=prompt("Enter the value for the frecuency of Atom Spawning.")}
+if(e.keyCode==67){zoom=prompt("Enter the value for the camera zoom.")}
+}
+ctx=document.getElementById("c").getContext("2d")
+cvs=document.getElementById("c")
+onkeyup=onkeydown=function(e){k[e.keyCode]=e.type=="keydown"}
+setInterval(function(){
+cvs.width=window.innerWidth-32
+cvs.height=window.innerHeight-32
+ctx.clearRect(0,0,1280,640)
+for(id in planet){planet[id].update()}
+view.update()
+},1)
+view={x:0,y:0,xs:0,ys:0,update:function(){
+ctx.fillStyle="rgba(255,255,255,0.5)"
+ctx.fillRect(cvs.width/2-8,cvs.height/2-32,16,64)
+ctx.fillRect(cvs.width/2-32,cvs.height/2-8,64,16)
+ctx.fillStyle="rgba(255,255,255,1)"
+ctx.fillText("Cross Acceleration:"+cs+" ---- Press Q and W to switch, E to enter a value.",16,16)
+ctx.fillText("Spawn:"+interval+" ---- Press A and S to switch, D to enter a value.",16,32)
+ctx.fillText("Zoom:"+zoom+" ---- Press Z and X to switch, C to enter a value.",16,48)
+ctx.fillText("Position X:"+view.x+" Y:"+view.y+" ----  Press arroys keys to switch.",16,64)
+ctx.fillText("Atom Count:"+id+" ---- Press Spacebar to create one more.",16,80)
+this.x+=this.xs
+this.y+=this.ys
+if(k[37]){this.xs-=cs/1000*(zoom*zoom)/(32*32)}
+if(k[38]){this.ys-=cs/1000*(zoom*zoom)/(32*32)}
+if(k[39]){this.xs+=cs/1000*(zoom*zoom)/(32*32)}
+if(k[40]){this.ys+=cs/1000*(zoom*zoom)/(32*32)}
+if(k[65]){if(interval>1){interval-=1}}
+if(k[83]){interval+=1}
+if(k[90]){if(zoom>16){zoom-=1}}
+if(k[88]){zoom+=1}
+if(k[81]){if(cs>1){cs-=1}}
+if(k[87]){cs+=1}
+if(framecount<interval/10){framecount+=1}else{framecount=0;generate()}
+}}
+function generate(){
+if(k[32]){id++
+planet[id]={t:10,x:view.x,y:view.y,xs:view.xs,ys:view.ys,update:function(){
+this.x+=this.xs
+this.y+=this.ys
+if(Math.pow((this.x-view.x)*(this.x-view.x)+(this.y-view.y)*(this.y-view.y),0.5)<(zoom*zoom)*768/(32*32)){
+ctx.beginPath()
+ctx.ellipse(32*32*(this.x-view.x)/(zoom*zoom)+cvs.width/2,
+32*32*(this.y-view.y)/(zoom*zoom)+cvs.height/2,
+32*32*16/(zoom*zoom),32*32*16/(zoom*zoom),0,0,2*Math.PI)
+ctx.closePath()
+ctx.fillStyle="rgba(0,127,255,1)"
+ctx.fill()
+}
+for(id in planet){
+if(Math.pow((this.x-planet[id].x)*(this.x-planet[id].x)+(this.y-planet[id].y)*(this.y-planet[id].y),0.5)>1){
+if(Math.pow((this.x-planet[id].x)*(this.x-planet[id].x)+(this.y-planet[id].y)*(this.y-planet[id].y),0.5)<32){
+if(Math.pow((this.x-planet[id].x)*(this.x-planet[id].x)+(this.y-planet[id].y)*(this.y-planet[id].y),0.5)<24){
+this.t+=1}else{if(0<this.t){this.t-=0.000000001}}
+if(0>(this.xs*(this.x-planet[id].x)+this.ys*(this.y-planet[id].y))/(Math.pow(
+(this.x-planet[id].x)*(this.x-planet[id].x)+(this.y-planet[id].y)*(this.y-planet[id].y),0.5))){
+this.xs+=this.t*0.01*(this.x-planet[id].x)/(Math.pow((this.x-planet[id].x)*(this.x-planet[id].x)+(this.y-planet[id].y)*(this.y-planet[id].y),0.5))
+this.ys+=this.t*0.01*(this.y-planet[id].y)/(Math.pow((this.x-planet[id].x)*(this.x-planet[id].x)+(this.y-planet[id].y)*(this.y-planet[id].y),0.5))
+}else{
+this.xs+=this.t*0.0001*(this.x-planet[id].x)/(Math.pow((this.x-planet[id].x)*(this.x-planet[id].x)+(this.y-planet[id].y)*(this.y-planet[id].y),0.5))
+this.ys+=this.t*0.0001*(this.y-planet[id].y)/(Math.pow((this.x-planet[id].x)*(this.x-planet[id].x)+(this.y-planet[id].y)*(this.y-planet[id].y),0.5))
+}
+}else{
+this.xs-=0.01*(this.x-planet[id].x)/(Math.pow((this.x-planet[id].x)*(this.x-planet[id].x)+(this.y-planet[id].y)*(this.y-planet[id].y),1))
+this.ys-=0.01*(this.y-planet[id].y)/(Math.pow((this.x-planet[id].x)*(this.x-planet[id].x)+(this.y-planet[id].y)*(this.y-planet[id].y),1))
+}}}}}}}
+</script>
+</body>
