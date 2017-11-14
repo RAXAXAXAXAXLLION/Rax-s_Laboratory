@@ -9,6 +9,8 @@ onkeydown=()=>{s++}
 setInterval(()=>{
 c.width=innerWidth
 c.height=innerHeight
+ctx.fillStyle="gray"
+ctx.fillRect(0,0,c.width,c.height)
 ctx.font="32px Impact"
 ctx.fillStyle="white"
 ctx.fillText("Score: "+s,8,32)
