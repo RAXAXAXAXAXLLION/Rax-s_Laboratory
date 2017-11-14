@@ -9,17 +9,17 @@ onkeydown=()=>{s++}
 setInterval(()=>{
 c.width=innerWidth
 c.height=innerHeight
-ctx.font="24px Impact"
+ctx.font="32px Impact"
 ctx.fillStyle="white"
-ctx.fillText("Score: "+s,0,0)
+ctx.fillText("Score: "+s,8,32)
 ctx.lineWidth="4"
 ctx.strokeStyle="black"
-ctx.strokeText("Best: "+s,0,0)
+ctx.strokeText("Best: "+s,8,32)
 ctx.fillStyle="white"
-ctx.fillText("Score: "+s,0,32)
+ctx.fillText("Score: "+s,8,64+16)
 ctx.lineWidth="4"
 ctx.strokeStyle="black"
-ctx.strokeText("Best: "+s,0,32)
+ctx.strokeText("Best: "+s,8,64+16)
 if(0<s){s--}
 },1)
 },1)
