@@ -6,9 +6,9 @@ document.body.style.margin="0"
 c=document.createElement("canvas")
 document.body.appendChild(c)
 ctx=c.getContext("2d")
+onmousedown=()=>{usd++}
 onkeydown=(e)=>{
-if(e.keyCode==49){usd++}
-if(e.keyCode==50){
+if(e.keyCode==49){
 if(0<usd){
 usd-=1
 ghs+=1
