@@ -14,11 +14,11 @@ document.title="Infinite maze."
 document.body.style.backgroundColor="black"
 document.body.style.margin="0 0 0 0"
 scene=new THREE.Scene()
-camera=new THREE.PerspectiveCamera(50,1,0.1,16)
+camera=new THREE.PerspectiveCamera(50,1,0.1,10000)
 vector={xs:0,ys:0,zs:0,xa:0,ya:0}
 camera.position.set(0,0,0);renderer=new THREE.WebGLRenderer()
 document.body.appendChild(renderer.domElement)
-light=new THREE.PointLight("rgb(0,127,255)",1,7.5);light.position.set(0,0,0);scene.add(light)
+light=new THREE.PointLight("rgb(0,127,255)",1,8);light.position.set(0,0,0);scene.add(light)
 function render(){
 requestAnimationFrame(render)
 renderer.render(scene,camera)
@@ -118,7 +118,7 @@ render()
 obj1={};i1=0
 obj2={};i2=0
 g=function(obj,x,y,z){
-if(obj==1){i1++;obj1[i1]={x:x,y:y,z:z,obj:new THREE.Mesh(new THREE.BoxGeometry(1,1,1),new THREE.MeshLambertMaterial({color:"rgb(200,200,200)",
+if(obj==1){i1++;obj1[i1]={x:x,y:y,z:z,obj:new THREE.Mesh(new THREE.BoxGeometry(1,1,1),new THREE.MeshLambertMaterial({color:"rgb(255,255,255)",
 transparent:true,opacity:1}))};scene.add(obj1[i1].obj)}
 if(obj==2){i2++;obj2[i2]={x:x,y:y,z:z,xs:Math.random()*0.2-0.1,ys:Math.random()*0.2-0.1,zs:Math.random()*0.2-0.1,obj:new THREE.Mesh(new THREE.BoxGeometry(1,1,1),
 new THREE.MeshLambertMaterial({color:"rgb(0,0,0)",transparent:true,opacity:1}))}}
