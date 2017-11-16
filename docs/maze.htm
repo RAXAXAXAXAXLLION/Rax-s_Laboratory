@@ -1,0 +1,113 @@
+<script src="three.js"></script>
+<script>
+s=1.5
+k=[]
+onkeydown=onkeyup=function(e){k[e.keyCode]=e.type=="keydown"}
+document.title="Infinite maze."
+document.write(".")
+document.body.innerHTML=""
+document.body.style.backgroundColor="black"
+document.body.style.margin="0 0 0 0"
+scene=new THREE.Scene()
+camera=new THREE.PerspectiveCamera(75,1,0.1,16);vector={xs:0,ys:0,zs:0,xa:0,ya:0}
+camera.position.set(0,0,0);renderer=new THREE.WebGLRenderer()
+document.body.appendChild(renderer.domElement)
+light=new THREE.PointLight("rgb(0,255,0)",1,8);light.position.set(0,0,0);scene.add(light)
+function render(){
+camera.aspect=window.innerWidth/window.innerHeight
+camera.updateProjectionMatrix()
+renderer.setSize(innerWidth,innerHeight)
+requestAnimationFrame(render)
+renderer.render(scene,camera)
+}
+setInterval(function(){
+if(k[37]){vector.xa+=0.1}
+if(k[38]){if(vector.ya<1.2){vector.ya+=0.1}}
+if(k[39]){vector.xa-=0.1}
+if(k[40]){if(-1.2<vector.ya){vector.ya-=0.1}}
+if(k[87]){vector.xs+=0.01*Math.sin(vector.xa)*Math.cos(vector.ya);vector.ys+=0.01*vector.ya;vector.zs+=0.01*Math.cos(vector.xa)*Math.cos(vector.ya)}
+if(k[83]){vector.xs-=0.01*Math.sin(vector.xa)*Math.cos(vector.ya);vector.ys-=0.01*vector.ya;vector.zs-=0.01*Math.cos(vector.xa)*Math.cos(vector.ya)}
+if(k[65]){vector.xs+=0.01*Math.sin(vector.xa+Math.PI/2)*Math.cos(vector.ya);vector.ys+=0.01*vector.ya;vector.zs+=0.01*Math.cos(vector.xa+Math.PI/2)*Math.cos(vector.ya)}
+if(k[68]){vector.xs+=0.01*Math.sin(vector.xa-Math.PI/2)*Math.cos(vector.ya);vector.ys+=0.01*vector.ya;vector.zs+=0.01*Math.cos(vector.xa-Math.PI/2)*Math.cos(vector.ya)}
+camera.position.x+=vector.xs;vector.xs=vector.xs*9/10
+camera.position.y+=vector.ys;vector.ys=vector.ys*9/10
+camera.position.z+=vector.zs;vector.zs=vector.zs*9/10
+light.position.set(camera.position.x,camera.position.y,camera.position.z)
+camera.lookAt(new THREE.Vector3(camera.position.x+Math.sin(vector.xa)*Math.cos(vector.ya),camera.position.y+vector.ya,camera.position.z+Math.cos(vector.xa)*Math.cos(vector.ya)))
+if(s<Math.max(Math.pow(camera.position.x*camera.position.x,1/2),Math.pow(camera.position.y*camera.position.y,1/2),Math.pow(camera.position.z*camera.position.z,1/2))+12){sy=1.5
+while(sy<s+1){sz=1.5;while(sz<sy+1){
+gen(s,sy,sz,0,0,0);if(Math.random()*16<1){g(2,s+1.5,sy+1.5,sz+1.5)}
+gen(s,sy,sz,1,0,0);gen(s,sy,sz,-1,0,0);gen(s,sy,sz,0,1,0);gen(s,sy,sz,0,-1,0);gen(s,sy,sz,0,0,1);gen(s,sy,sz,0,0,-1)
+if(Math.random()*2<1){gen(s,sy,sz,1,1,0);gen(s,sy,sz,1,2,0);gen(s,sy,sz,2,1,0);gen(s,sy,sz,2,2,0)}
+if(Math.random()*2<1){gen(s,sy,sz,0,1,1);gen(s,sy,sz,0,1,2);gen(s,sy,sz,0,2,1);gen(s,sy,sz,0,2,2)}
+if(Math.random()*2<1){gen(s,sy,sz,1,0,1);gen(s,sy,sz,1,0,2);gen(s,sy,sz,2,0,1);gen(s,sy,sz,2,0,2)}
+sz+=3};while(sz==sy){sz=0}sy+=3};while(sy==s){sy=0}s+=3}
+for(i1 in obj1){
+obj1[i1].obj.position.set(obj1[i1].x,obj1[i1].y,obj1[i1].z)
+if(camera.position.x-0.5<obj1[i1].x+0.5){if(camera.position.x+0.5>obj1[i1].x-0.5){
+if(camera.position.y-0.5<obj1[i1].y+0.5){if(camera.position.y+0.5>obj1[i1].y-0.5){
+if(camera.position.z-0.5<obj1[i1].z+0.5){if(camera.position.z+0.5>obj1[i1].z-0.5){
+vector.xs-=0.01*(obj1[i1].x-camera.position.x)/Math.pow(
+(obj1[i1].x-camera.position.x)*(obj1[i1].x-camera.position.x)+
+(obj1[i1].y-camera.position.y)*(obj1[i1].y-camera.position.y)+
+(obj1[i1].z-camera.position.z)*(obj1[i1].z-camera.position.z),3/2)
+vector.ys-=0.01*(obj1[i1].y-camera.position.y)/Math.pow(
+(obj1[i1].x-camera.position.x)*(obj1[i1].x-camera.position.x)+
+(obj1[i1].y-camera.position.y)*(obj1[i1].y-camera.position.y)+
+(obj1[i1].z-camera.position.z)*(obj1[i1].z-camera.position.z),3/2)
+vector.zs-=0.01*(obj1[i1].z-camera.position.z)/Math.pow(
+(obj1[i1].x-camera.position.x)*(obj1[i1].x-camera.position.x)+
+(obj1[i1].y-camera.position.y)*(obj1[i1].y-camera.position.y)+
+(obj1[i1].z-camera.position.z)*(obj1[i1].z-camera.position.z),3/2)
+}}}}}}
+}
+for(i2 in obj2){
+obj2[i2].obj.position.set(obj2[i2].x,obj2[i2].y,obj2[i2].z)
+obj2[i2].x+=obj2[i2].xs;if(0.1<obj2[i2].xs){obj2[i2].xs=obj2[i2].xs*7/8};if(obj2[i2].xs<-0.1){obj2[i2].xs=obj2[i2].xs*7/8}
+obj2[i2].y+=obj2[i2].ys;if(0.1<obj2[i2].ys){obj2[i2].ys=obj2[i2].ys*7/8};if(obj2[i2].ys<-0.1){obj2[i2].ys=obj2[i2].ys*7/8}
+obj2[i2].z+=obj2[i2].zs;if(0.1<obj2[i2].zs){obj2[i2].zs=obj2[i2].zs*7/8};if(obj2[i2].zs<-0.1){obj2[i2].zs=obj2[i2].zs*7/8}
+if(camera.position.x-0.5<obj2[i2].x+0.5){if(camera.position.x+0.5>obj2[i2].x-0.5){
+if(camera.position.y-0.5<obj2[i2].y+0.5){if(camera.position.y+0.5>obj2[i2].y-0.5){
+if(camera.position.z-0.5<obj2[i2].z+0.5){if(camera.position.z+0.5>obj2[i2].z-0.5){
+camera.position.x=1/0;alert("Moriste!")
+}}}}}}
+}
+for(i1 in obj1){for(i2 in obj2){
+if(obj1[i1].x-0.5<obj2[i2].x+0.5){if(obj1[i1].x+0.5>obj2[i2].x-0.5){
+if(obj1[i1].y-0.5<obj2[i2].y+0.5){if(obj1[i1].y+0.5>obj2[i2].y-0.5){
+if(obj1[i1].z-0.5<obj2[i2].z+0.5){if(obj1[i1].z+0.5>obj2[i2].z-0.5){
+obj2[i2].xs+=0.01*(obj2[i2].x-obj1[i1].x)/Math.pow(
+(obj2[i2].x-obj1[i1].x)*(obj2[i2].x-obj1[i1].x)+
+(obj2[i2].y-obj1[i1].y)*(obj2[i2].y-obj1[i1].y)+
+(obj2[i2].z-obj1[i1].z)*(obj2[i2].z-obj1[i1].z),3/2)
+obj2[i2].ys+=0.01*(obj2[i2].y-obj1[i1].y)/Math.pow(
+(obj2[i2].x-obj1[i1].x)*(obj2[i2].x-obj1[i1].x)+
+(obj2[i2].y-obj1[i1].y)*(obj2[i2].y-obj1[i1].y)+
+(obj2[i2].z-obj1[i1].z)*(obj2[i2].z-obj1[i1].z),3/2)
+obj2[i2].zs+=0.01*(obj2[i2].z-obj1[i1].z)/Math.pow(
+(obj2[i2].x-obj1[i1].x)*(obj2[i2].x-obj1[i1].x)+
+(obj2[i2].y-obj1[i1].y)*(obj2[i2].y-obj1[i1].y)+
+(obj2[i2].z-obj1[i1].z)*(obj2[i2].z-obj1[i1].z),3/2)
+}}}}}}
+}}
+},1)
+render()
+obj1={};i1=0
+obj2={};i2=0
+g=function(obj,x,y,z){
+if(obj==1){i1++;obj1[i1]={x:x,y:y,z:z,obj:new THREE.Mesh(new THREE.BoxGeometry(1,1,1),new THREE.MeshLambertMaterial({color:"rgb(200,200,200)",
+transparent:true,opacity:1}))};scene.add(obj1[i1].obj)}
+if(obj==2){i2++;obj2[i2]={x:x,y:y,z:z,xs:Math.random()*0.2-0.1,ys:Math.random()*0.2-0.1,zs:Math.random()*0.2-0.1,obj:new THREE.Mesh(new THREE.BoxGeometry(1,1,1),
+new THREE.MeshLambertMaterial({color:"rgb(0,0,0)",transparent:true,opacity:1}))};scene.add(obj2[i2].obj)}
+}
+gen=function(x,y,z,a,b,c){
+g(1,x+a,y+b,z+c);g(1,y+a,x+b,z+c);g(1,y+a,z+b,x+c);g(1,x+a,z+b,y+c);g(1,z+a,x+b,y+c);g(1,z+a,y+b,x+c)
+g(1,-x+a,y+b,z+c);g(1,-y+a,x+b,z+c);g(1,-y+a,z+b,x+c);g(1,-x+a,z+b,y+c);g(1,-z+a,x+b,y+c);g(1,-z+a,y+b,x+c)
+g(1,x+a,-y+b,z+c);g(1,y+a,-x+b,z+c);g(1,y+a,-z+b,x+c);g(1,x+a,-z+b,y+c);g(1,z+a,-x+b,y+c);g(1,z+a,-y+b,x+c)
+g(1,-x+a,-y+b,z+c);g(1,-y+a,-s+b,z+c);g(1,-y+a,-z+b,x+c);g(1,-x+a,-z+b,y+c);g(1,-z+a,-x+b,y+c);g(1,-z+a,-y+b,x+c)
+g(1,x+a,y+b,-z+c);g(1,y+a,x+b,-z+c);g(1,y+a,z+b,-x+c);g(1,x+a,z+b,-y+c);g(1,z+a,x+b,-y+c);g(1,z+a,y+b,-x+c)
+g(1,-x+a,y+b,-z+c);g(1,-y+a,x+b,-z+c);g(1,-y+a,z+b,-x+c);g(1,-x+a,z+b,-y+c);g(1,-z+a,x+b,-y+c);g(1,-z+a,y+b,-x+c)
+g(1,x+a,-y+b,-z+c);g(1,y+a,-x+b,-z+c);g(1,y+a,-z+b,-x+c);g(1,x+a,-z+b,-y+c);g(1,z+a,-x+b,-y+c);g(1,z+a,-y+b,-x+c)
+g(1,-x+a,-y+b,-z+c);g(1,-y+a,-x+b,-z+c);g(1,-y+a,-z+b,-x+c);g(1,-x+a,-z+b,-y+c);g(1,-z+a,-x+b,-y+c);g(1,-z+a,-y+b,-x+c)
+}
+</script>
