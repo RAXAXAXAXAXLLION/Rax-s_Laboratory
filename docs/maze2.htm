@@ -54,6 +54,7 @@ if(Math.random()*2<1){gen(s,sy,sz,0,1,1);gen(s,sy,sz,0,1,2);gen(s,sy,sz,0,2,1);g
 if(Math.random()*2<1){gen(s,sy,sz,1,0,1);gen(s,sy,sz,1,0,2);gen(s,sy,sz,2,0,1);gen(s,sy,sz,2,0,2)}
 sz+=3};while(sz==sy){sz=0}sy+=3};while(sy==s){sy=0}s+=3}
 for(i1 in obj1){
+/*
 if(Math.pow(
 (obj1[i1].x-camera.position.x-4*Math.sin(vector.xa)*Math.cos(vector.ya))*
 (obj1[i1].x-camera.position.x-4*Math.sin(vector.xa)*Math.cos(vector.ya))+
@@ -65,7 +66,7 @@ if(Math.pow(
 if(!scene.getObjectById(obj1[i1].obj.id)){scene.add(obj1[i1].obj)}
 }else{
 if(scene.getObjectById(obj1[i1].obj.id)){scene.remove(obj1[i1].obj)}
-}
+}*/
 obj1[i1].obj.position.set(obj1[i1].x,obj1[i1].y,obj1[i1].z)
 if(camera.position.x-0.5<obj1[i1].x+0.5){if(camera.position.x+0.5>obj1[i1].x-0.5){
 if(camera.position.y-0.5<obj1[i1].y+0.5){if(camera.position.y+0.5>obj1[i1].y-0.5){
