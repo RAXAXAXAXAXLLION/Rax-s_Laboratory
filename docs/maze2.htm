@@ -12,7 +12,7 @@ scene=new THREE.Scene()
 camera=new THREE.PerspectiveCamera(75,1,0.1,16);vector={xs:0,ys:0,zs:0,xa:0,ya:0}
 camera.position.set(0,0,0);renderer=new THREE.WebGLRenderer()
 document.body.appendChild(renderer.domElement)
-light=new THREE.PointLight("rgb(0,127,255)",1,5);light.position.set(0,0,0);scene.add(light)
+light=new THREE.PointLight("rgb(0,127,255)",1,8);light.position.set(0,0,0);scene.add(light)
 function render(){
 requestAnimationFrame(render)
 renderer.render(scene,camera)
@@ -45,12 +45,12 @@ sz+=3};while(sz==sy){sz=0}sy+=3};while(sy==s){sy=0}s+=3}
 //new THREE.Vector3(camera.position.x+Math.sin(vector.xa)*Math.cos(vector.ya),camera.position.y+vector.ya,camera.position.z+Math.cos(vector.xa)*Math.cos(vector.ya))
 for(i1 in obj1){
 if(Math.pow(
-(obj1[i1].x-camera.position.x-3*Math.sin(vector.xa)*Math.cos(vector.ya))*
-(obj1[i1].x-camera.position.x-3*Math.sin(vector.xa)*Math.cos(vector.ya))+
-(obj1[i1].y-camera.position.y-3*vector.ya)*
-(obj1[i1].y-camera.position.y-3*vector.ya)+
-(obj1[i1].z-camera.position.z-3*Math.cos(vector.xa)*Math.cos(vector.ya))*
-(obj1[i1].z-camera.position.z-3*Math.cos(vector.xa)*Math.cos(vector.ya)),
+(obj1[i1].x-camera.position.x-6*Math.sin(vector.xa)*Math.cos(vector.ya))*
+(obj1[i1].x-camera.position.x-6*Math.sin(vector.xa)*Math.cos(vector.ya))+
+(obj1[i1].y-camera.position.y-6*vector.ya)*
+(obj1[i1].y-camera.position.y-6*vector.ya)+
+(obj1[i1].z-camera.position.z-6*Math.cos(vector.xa)*Math.cos(vector.ya))*
+(obj1[i1].z-camera.position.z-6*Math.cos(vector.xa)*Math.cos(vector.ya)),
 1/2)<4){
 if(!scene.getObjectById(obj1[i1].obj.id)){scene.add(obj1[i1].obj)}
 }else{
