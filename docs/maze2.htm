@@ -14,11 +14,11 @@ camera.position.set(0,0,0);renderer=new THREE.WebGLRenderer()
 document.body.appendChild(renderer.domElement)
 light=new THREE.PointLight("rgb(0,255,0)",1,8);light.position.set(0,0,0);scene.add(light)
 function render(){
-camera.aspect=window.innerWidth/window.innerHeight
-camera.updateProjectionMatrix()
-renderer.setSize(innerWidth,innerHeight)
 requestAnimationFrame(render)
 renderer.render(scene,camera)
+camera.updateProjectionMatrix()
+camera.aspect=innerWidth/innerHeight
+renderer.setSize(innerWidth,innerHeight)
 }
 setInterval(function(){
 if(k[37]){vector.xa+=0.1}
@@ -43,6 +43,14 @@ if(Math.random()*2<1){gen(s,sy,sz,0,1,1);gen(s,sy,sz,0,1,2);gen(s,sy,sz,0,2,1);g
 if(Math.random()*2<1){gen(s,sy,sz,1,0,1);gen(s,sy,sz,1,0,2);gen(s,sy,sz,2,0,1);gen(s,sy,sz,2,0,2)}
 sz+=3};while(sz==sy){sz=0}sy+=3};while(sy==s){sy=0}s+=3}
 for(i1 in obj1){
+if(Math.pow(
+(obj1[i1].x-camera.position.x)*(obj1[i1].x-camera.position.x)+
+(obj1[i1].y-camera.position.y)*(obj1[i1].y-camera.position.y)+
+(obj1[i1].z-camera.position.z)*(obj1[i1].z-camera.position.z),1/2)<4){
+if(!obj[i1].obj){scene.add(obj1[i1].obj)}
+}else{
+if(obj[i1].obj){scene.remove(obj1[i1].obj)}
+}
 obj1[i1].obj.position.set(obj1[i1].x,obj1[i1].y,obj1[i1].z)
 if(camera.position.x-0.5<obj1[i1].x+0.5){if(camera.position.x+0.5>obj1[i1].x-0.5){
 if(camera.position.y-0.5<obj1[i1].y+0.5){if(camera.position.y+0.5>obj1[i1].y-0.5){
