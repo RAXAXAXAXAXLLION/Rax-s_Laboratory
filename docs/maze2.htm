@@ -4,9 +4,10 @@ k=[]
 s=1.5
 onmousedown=()=>{document.body.requestPointerLock()}
 onmousemove=(e)=>{
+if(document.pointerLockElement===document.body){
 vector.xa-=0.01*e.movementX
 vector.ya-=0.01*e.movementY
-}
+}}
 onkeydown=onkeyup=function(e){k[e.keyCode]=e.type=="keydown"}
 document.title="Infinite maze."
 document.write(".")
