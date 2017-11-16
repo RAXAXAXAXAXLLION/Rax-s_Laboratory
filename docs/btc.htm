@@ -1,13 +1,12 @@
 <script>
-s=0
-m=0
+usd=0
 setTimeout(()=>{
 document.body.style.margin="0"
 c=document.createElement("canvas")
 document.body.appendChild(c)
 ctx=c.getContext("2d")
 onkeydown=(e)=>{
-if(e.keyCode==49){s++}
+if(e.keyCode==49){usd++}
 if(e.keyCode==50){}
 }
 setInterval(()=>{
@@ -17,7 +16,7 @@ ctx.fillStyle="black"
 ctx.fillRect(0,0,c.width,c.height)
 ctx.font="32px Impact"
 ctx.fillStyle="rgb(0,255,0)"
-ctx.fillText("USD: "+s,8,32)
+ctx.fillText("USD: "+usd,8,32)
 },1)
 },1)
 </script>
