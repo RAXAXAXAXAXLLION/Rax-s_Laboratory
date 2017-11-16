@@ -47,7 +47,7 @@ if(Math.pow(
 (obj1[i1].x-camera.position.x)*(obj1[i1].x-camera.position.x)+
 (obj1[i1].y-camera.position.y)*(obj1[i1].y-camera.position.y)+
 (obj1[i1].z-camera.position.z)*(obj1[i1].z-camera.position.z),1/2)<4){
-if(!obj1[i1].obj){scene.add(obj1[i1].obj)}
+if(obj1[i1].obj){}else{scene.add(obj1[i1].obj)}
 }else{
 if(obj1[i1].obj){scene.remove(obj1[i1].obj)}
 }
