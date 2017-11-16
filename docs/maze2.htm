@@ -43,7 +43,7 @@ if(k[68]){vector.xs+=0.01*Math.sin(vector.xa-Math.PI/2)*Math.cos(vector.ya);vect
 light.position.set(camera.position.x,camera.position.y,camera.position.z)
 camera.lookAt(new THREE.Vector3(
 camera.position.x+Math.sin(vector.xa)*Math.cos(vector.ya),
-camera.position.y+Math.cos(vector.ya),
+camera.position.y+Math.sin(vector.ya),
 camera.position.z+Math.cos(vector.xa)*Math.cos(vector.ya)))
 if(s<Math.max(Math.pow(camera.position.x*camera.position.x,1/2),Math.pow(camera.position.y*camera.position.y,1/2),Math.pow(camera.position.z*camera.position.z,1/2))+12){sy=1.5
 while(sy<s+1){sz=1.5;while(sz<sy+1){
@@ -57,8 +57,8 @@ for(i1 in obj1){
 if(Math.pow(
 (obj1[i1].x-camera.position.x-4*Math.sin(vector.xa)*Math.cos(vector.ya))*
 (obj1[i1].x-camera.position.x-4*Math.sin(vector.xa)*Math.cos(vector.ya))+
-(obj1[i1].y-camera.position.y-4*Math.cos(vector.ya))*
-(obj1[i1].y-camera.position.y-4*Math.cos(vector.ya))+
+(obj1[i1].y-camera.position.y-4*Math.sin(vector.ya))*
+(obj1[i1].y-camera.position.y-4*Math.sin(vector.ya))+
 (obj1[i1].z-camera.position.z-4*Math.cos(vector.xa)*Math.cos(vector.ya))*
 (obj1[i1].z-camera.position.z-4*Math.cos(vector.xa)*Math.cos(vector.ya)),
 1/2)<5){
