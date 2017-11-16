@@ -2,7 +2,7 @@
 <script>
 k=[]
 s=1.5
-onmousedown=()=>{canvas.requestPointerLock()}
+onmousedown=()=>{document.body.requestPointerLock()}
 onkeydown=onkeyup=function(e){k[e.keyCode]=e.type=="keydown"}
 document.title="Infinite maze."
 document.write(".")
