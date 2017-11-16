@@ -32,13 +32,15 @@ if(k[37]){vector.xa+=0.1}
 if(k[38]){if(vector.ya<1.2){vector.ya+=0.1}}
 if(k[39]){vector.xa-=0.1}
 if(k[40]){if(-1.2<vector.ya){vector.ya-=0.1}}
+camera.position.x+=vector.xs;vector.xs=vector.xs*9/10
+camera.position.y+=vector.ys;vector.ys=vector.ys*9/10
+camera.position.z+=vector.zs;vector.zs=vector.zs*9/10
+if(-1<vector.ya){vector.ya+=0.01}
+if(vector.ya<1){vector.ya-=0.01}
 if(k[87]){vector.xs+=0.01*Math.sin(vector.xa)*Math.cos(vector.ya);vector.ys+=0.01*vector.ya;vector.zs+=0.01*Math.cos(vector.xa)*Math.cos(vector.ya)}
 if(k[83]){vector.xs-=0.01*Math.sin(vector.xa)*Math.cos(vector.ya);vector.ys-=0.01*vector.ya;vector.zs-=0.01*Math.cos(vector.xa)*Math.cos(vector.ya)}
 if(k[65]){vector.xs+=0.01*Math.sin(vector.xa+Math.PI/2)*Math.cos(vector.ya);vector.ys+=0.01*vector.ya;vector.zs+=0.01*Math.cos(vector.xa+Math.PI/2)*Math.cos(vector.ya)}
 if(k[68]){vector.xs+=0.01*Math.sin(vector.xa-Math.PI/2)*Math.cos(vector.ya);vector.ys+=0.01*vector.ya;vector.zs+=0.01*Math.cos(vector.xa-Math.PI/2)*Math.cos(vector.ya)}
-camera.position.x+=vector.xs;vector.xs=vector.xs*9/10
-camera.position.y+=vector.ys;vector.ys=vector.ys*9/10
-camera.position.z+=vector.zs;vector.zs=vector.zs*9/10
 light.position.set(camera.position.x,camera.position.y,camera.position.z)
 camera.lookAt(new THREE.Vector3(camera.position.x+Math.sin(vector.xa)*Math.cos(vector.ya),camera.position.y+vector.ya,camera.position.z+Math.cos(vector.xa)*Math.cos(vector.ya)))
 if(s<Math.max(Math.pow(camera.position.x*camera.position.x,1/2),Math.pow(camera.position.y*camera.position.y,1/2),Math.pow(camera.position.z*camera.position.z,1/2))+12){sy=1.5
@@ -49,7 +51,6 @@ if(Math.random()*2<1){gen(s,sy,sz,1,1,0);gen(s,sy,sz,1,2,0);gen(s,sy,sz,2,1,0);g
 if(Math.random()*2<1){gen(s,sy,sz,0,1,1);gen(s,sy,sz,0,1,2);gen(s,sy,sz,0,2,1);gen(s,sy,sz,0,2,2)}
 if(Math.random()*2<1){gen(s,sy,sz,1,0,1);gen(s,sy,sz,1,0,2);gen(s,sy,sz,2,0,1);gen(s,sy,sz,2,0,2)}
 sz+=3};while(sz==sy){sz=0}sy+=3};while(sy==s){sy=0}s+=3}
-//new THREE.Vector3(camera.position.x+Math.sin(vector.xa)*Math.cos(vector.ya),camera.position.y+vector.ya,camera.position.z+Math.cos(vector.xa)*Math.cos(vector.ya))
 for(i1 in obj1){
 if(Math.pow(
 (obj1[i1].x-camera.position.x-4*Math.sin(vector.xa)*Math.cos(vector.ya))*
