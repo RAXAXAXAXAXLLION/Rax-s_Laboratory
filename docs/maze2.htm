@@ -2,14 +2,16 @@
 <script>
 k=[]
 s=1.5
+onmousedown=()=>{canvas.requestPointerLock()}
 onkeydown=onkeyup=function(e){k[e.keyCode]=e.type=="keydown"}
-document.title="Maze infinite."
+document.title="Infinite maze."
 document.write(".")
 document.body.innerHTML=""
 document.body.style.backgroundColor="black"
 document.body.style.margin="0 0 0 0"
 scene=new THREE.Scene()
-camera=new THREE.PerspectiveCamera(75,1,0.1,16);vector={xs:0,ys:0,zs:0,xa:0,ya:0}
+camera=new THREE.PerspectiveCamera(75,1,0.1,16)
+vector={xs:0,ys:0,zs:0,xa:0,ya:0}
 camera.position.set(0,0,0);renderer=new THREE.WebGLRenderer()
 document.body.appendChild(renderer.domElement)
 light=new THREE.PointLight("rgb(0,127,255)",1,7.5);light.position.set(0,0,0);scene.add(light)
