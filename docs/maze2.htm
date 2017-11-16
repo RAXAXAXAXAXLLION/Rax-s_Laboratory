@@ -35,8 +35,8 @@ if(k[40]){if(-1.2<vector.ya){vector.ya-=0.1}}
 camera.position.x+=vector.xs;vector.xs=vector.xs*9/10
 camera.position.y+=vector.ys;vector.ys=vector.ys*9/10
 camera.position.z+=vector.zs;vector.zs=vector.zs*9/10
-if(-1<vector.ya){vector.ya=-1}
-if(vector.ya<1){vector.ya=1}
+if(vector.ya<-1){vector.ya=-1}
+if(1<vector.ya){vector.ya=1}
 if(k[87]){vector.xs+=0.01*Math.sin(vector.xa)*Math.cos(vector.ya);vector.ys+=0.01*vector.ya;vector.zs+=0.01*Math.cos(vector.xa)*Math.cos(vector.ya)}
 if(k[83]){vector.xs-=0.01*Math.sin(vector.xa)*Math.cos(vector.ya);vector.ys-=0.01*vector.ya;vector.zs-=0.01*Math.cos(vector.xa)*Math.cos(vector.ya)}
 if(k[65]){vector.xs+=0.01*Math.sin(vector.xa+Math.PI/2)*Math.cos(vector.ya);vector.ys+=0.01*vector.ya;vector.zs+=0.01*Math.cos(vector.xa+Math.PI/2)*Math.cos(vector.ya)}
