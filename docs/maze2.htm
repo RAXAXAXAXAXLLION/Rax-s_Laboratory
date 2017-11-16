@@ -46,7 +46,7 @@ for(i1 in obj1){
 if(Math.pow(
 (obj1[i1].x-camera.position.x)*(obj1[i1].x-camera.position.x)+
 (obj1[i1].y-camera.position.y)*(obj1[i1].y-camera.position.y)+
-(obj1[i1].z-camera.position.z)*(obj1[i1].z-camera.position.z),1/2)<3){
+(obj1[i1].z-camera.position.z)*(obj1[i1].z-camera.position.z),1/2)<4){
 if(!scene.getObjectById(obj1[i1].obj.id)){scene.add(obj1[i1].obj)}
 }else{
 if(scene.getObjectById(obj1[i1].obj.id)){scene.remove(obj1[i1].obj)}
