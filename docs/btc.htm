@@ -1,5 +1,6 @@
 <script>
 usd=0
+ghs=0
 setTimeout(()=>{
 document.body.style.margin="0"
 c=document.createElement("canvas")
@@ -7,7 +8,11 @@ document.body.appendChild(c)
 ctx=c.getContext("2d")
 onkeydown=(e)=>{
 if(e.keyCode==49){usd++}
-if(e.keyCode==50){}
+if(e.keyCode==50){
+if(0<usd){
+usd-=1
+ghs+=1
+}}
 }
 setInterval(()=>{
 c.width=innerWidth
@@ -15,8 +20,10 @@ c.height=innerHeight
 ctx.fillStyle="black"
 ctx.fillRect(0,0,c.width,c.height)
 ctx.font="32px Impact"
-ctx.fillStyle="rgb(0,255,0)"
+ctx.fillStyle="rgb(200,200,200)"
 ctx.fillText("USD: "+usd,8,32)
+ctx.fillStyle="rgb(0,255,255)"
+ctx.fillText("GHS: "+ghs,8,32)
 },1)
 },1)
 </script>
