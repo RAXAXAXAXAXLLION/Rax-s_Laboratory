@@ -12,7 +12,7 @@ scene=new THREE.Scene()
 camera=new THREE.PerspectiveCamera(75,1,0.1,16);vector={xs:0,ys:0,zs:0,xa:0,ya:0}
 camera.position.set(0,0,0);renderer=new THREE.WebGLRenderer()
 document.body.appendChild(renderer.domElement)
-light=new THREE.PointLight("rgb(0,127,255)",1,8);light.position.set(0,0,0);scene.add(light)
+light=new THREE.PointLight("rgb(0,127,255)",1,7);light.position.set(0,0,0);scene.add(light)
 function render(){
 requestAnimationFrame(render)
 renderer.render(scene,camera)
@@ -46,7 +46,7 @@ for(i1 in obj1){
 if(Math.pow(
 (obj1[i1].x-camera.position.x)*(obj1[i1].x-camera.position.x)+
 (obj1[i1].y-camera.position.y)*(obj1[i1].y-camera.position.y)+
-(obj1[i1].z-camera.position.z)*(obj1[i1].z-camera.position.z),1/2)<10){
+(obj1[i1].z-camera.position.z)*(obj1[i1].z-camera.position.z),1/2)<7){
 if(!scene.getObjectById(obj1[i1].obj.id)){scene.add(obj1[i1].obj)}
 }else{
 if(scene.getObjectById(obj1[i1].obj.id)){scene.remove(obj1[i1].obj)}
