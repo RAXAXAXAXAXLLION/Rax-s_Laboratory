@@ -42,11 +42,16 @@ if(Math.random()*2<1){gen(s,sy,sz,1,1,0);gen(s,sy,sz,1,2,0);gen(s,sy,sz,2,1,0);g
 if(Math.random()*2<1){gen(s,sy,sz,0,1,1);gen(s,sy,sz,0,1,2);gen(s,sy,sz,0,2,1);gen(s,sy,sz,0,2,2)}
 if(Math.random()*2<1){gen(s,sy,sz,1,0,1);gen(s,sy,sz,1,0,2);gen(s,sy,sz,2,0,1);gen(s,sy,sz,2,0,2)}
 sz+=3};while(sz==sy){sz=0}sy+=3};while(sy==s){sy=0}s+=3}
+//new THREE.Vector3(camera.position.x+Math.sin(vector.xa)*Math.cos(vector.ya),camera.position.y+vector.ya,camera.position.z+Math.cos(vector.xa)*Math.cos(vector.ya))
 for(i1 in obj1){
 if(Math.pow(
-(obj1[i1].x-camera.position.x)*(obj1[i1].x-camera.position.x)+
-(obj1[i1].y-camera.position.y)*(obj1[i1].y-camera.position.y)+
-(obj1[i1].z-camera.position.z)*(obj1[i1].z-camera.position.z),1/2)<4){
+(obj1[i1].x-camera.position.x+3*Math.sin(vector.xa)*Math.cos(vector.ya))*
+(obj1[i1].x-camera.position.x+3*Math.sin(vector.xa)*Math.cos(vector.ya))+
+(obj1[i1].y-camera.position.y+3*vector.ya)*
+(obj1[i1].y-camera.position.y+3*vector.ya)+
+(obj1[i1].z-camera.position.z+3*Math.cos(vector.xa)*Math.cos(vector.ya))*
+(obj1[i1].z-camera.position.z+3*Math.cos(vector.xa)*Math.cos(vector.ya)),
+1/2)<4){
 if(!scene.getObjectById(obj1[i1].obj.id)){scene.add(obj1[i1].obj)}
 }else{
 if(scene.getObjectById(obj1[i1].obj.id)){scene.remove(obj1[i1].obj)}
