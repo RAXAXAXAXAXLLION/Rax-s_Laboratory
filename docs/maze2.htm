@@ -51,7 +51,7 @@ if(Math.pow(
 (obj1[i1].y-camera.position.y-4*vector.ya)+
 (obj1[i1].z-camera.position.z-4*Math.cos(vector.xa)*Math.cos(vector.ya))*
 (obj1[i1].z-camera.position.z-4*Math.cos(vector.xa)*Math.cos(vector.ya)),
-1/2)<3){
+1/2)<5){
 if(!scene.getObjectById(obj1[i1].obj.id)){scene.add(obj1[i1].obj)}
 }else{
 if(scene.getObjectById(obj1[i1].obj.id)){scene.remove(obj1[i1].obj)}
