@@ -1,6 +1,7 @@
 <script>
 usd=0
 ghs=0
+btc=0
 setTimeout(()=>{
 document.body.style.margin="0"
 c=document.createElement("canvas")
@@ -13,6 +14,11 @@ if(0<usd){
 usd-=1
 ghs+=1
 }}
+if(e.keyCode==50){
+if(0<btc){
+btc-=1
+ghs+=1
+}}
 }
 setInterval(()=>{
 c.width=innerWidth
@@ -22,8 +28,11 @@ ctx.fillRect(0,0,c.width,c.height)
 ctx.font="32px Impact"
 ctx.fillStyle="rgb(200,200,200)"
 ctx.fillText("USD: "+usd,8,32)
+ctx.fillStyle="rgb(255,200,0)"
+ctx.fillText("BTC: "+btc,8,64)
 ctx.fillStyle="rgb(0,255,255)"
-ctx.fillText("GHS: "+ghs,8,64)
+ctx.fillText("GHS: "+ghs,8,96)
+btc+=0.0000000001/Math.random()
 },1)
 },1)
 </script>
