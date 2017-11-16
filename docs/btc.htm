@@ -6,7 +6,10 @@ document.body.style.margin="0"
 c=document.createElement("canvas")
 document.body.appendChild(c)
 ctx=c.getContext("2d")
-onkeydown=()=>{s++}
+onkeydown=(e)=>{
+if(e.keyCode==49){s++}
+if(e.keyCode==50){}
+}
 setInterval(()=>{
 c.width=innerWidth
 c.height=innerHeight
@@ -14,11 +17,7 @@ ctx.fillStyle="black"
 ctx.fillRect(0,0,c.width,c.height)
 ctx.font="32px Impact"
 ctx.fillStyle="rgb(0,255,0)"
-ctx.fillText("Score: "+s,8,32)
-ctx.fillStyle="rgb(0,255,0)"
-ctx.fillText("Score: "+m,8,64+16)
-if(0<s){s--}
-if(m<s){m=s}
+ctx.fillText("USD: "+s,8,32)
 },1)
 },1)
 </script>
