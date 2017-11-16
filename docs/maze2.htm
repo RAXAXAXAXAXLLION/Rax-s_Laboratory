@@ -41,7 +41,10 @@ if(k[83]){vector.xs-=0.01*Math.sin(vector.xa)*Math.cos(vector.ya);vector.ys-=0.0
 if(k[65]){vector.xs+=0.01*Math.sin(vector.xa+Math.PI/2)*Math.cos(vector.ya);vector.ys+=0.01*vector.ya;vector.zs+=0.01*Math.cos(vector.xa+Math.PI/2)*Math.cos(vector.ya)}
 if(k[68]){vector.xs+=0.01*Math.sin(vector.xa-Math.PI/2)*Math.cos(vector.ya);vector.ys+=0.01*vector.ya;vector.zs+=0.01*Math.cos(vector.xa-Math.PI/2)*Math.cos(vector.ya)}
 light.position.set(camera.position.x,camera.position.y,camera.position.z)
-camera.lookAt(new THREE.Vector3(camera.position.x+Math.sin(vector.xa)*Math.cos(vector.ya),camera.position.y+Math.cos(vector.ya),camera.position.z+Math.cos(vector.xa)*Math.cos(vector.ya)))
+camera.lookAt(new THREE.Vector3(
+camera.position.x+Math.sin(vector.xa)*Math.cos(vector.ya),
+camera.position.y+Math.cos(vector.ya),
+camera.position.z+Math.cos(vector.xa)*Math.cos(vector.ya)))
 if(s<Math.max(Math.pow(camera.position.x*camera.position.x,1/2),Math.pow(camera.position.y*camera.position.y,1/2),Math.pow(camera.position.z*camera.position.z,1/2))+12){sy=1.5
 while(sy<s+1){sz=1.5;while(sz<sy+1){
 gen(s,sy,sz,0,0,0);if(Math.random()*16<1){g(2,s+1.5,sy+1.5,sz+1.5)}
