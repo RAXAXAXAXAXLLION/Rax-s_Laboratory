@@ -142,12 +142,12 @@
       }
       for (i1 in obj1) {
         if (Math.pow(
-            (obj1[i1].x - camera.position.x - 6 * Math.sin(vector.xa) * Math.cos(vector.ya)) *
-            (obj1[i1].x - camera.position.x - 6 * Math.sin(vector.xa) * Math.cos(vector.ya)) +
-            (obj1[i1].y - camera.position.y - 6 * Math.sin(vector.ya)) *
-            (obj1[i1].y - camera.position.y - 6 * Math.sin(vector.ya)) +
-            (obj1[i1].z - camera.position.z - 6 * Math.cos(vector.xa) * Math.cos(vector.ya)) *
-            (obj1[i1].z - camera.position.z - 6 * Math.cos(vector.xa) * Math.cos(vector.ya)),
+            (obj1[i1].x - camera.position.x - 7 * Math.sin(vector.xa) * Math.cos(vector.ya)) *
+            (obj1[i1].x - camera.position.x - 7 * Math.sin(vector.xa) * Math.cos(vector.ya)) +
+            (obj1[i1].y - camera.position.y - 7 * Math.sin(vector.ya)) *
+            (obj1[i1].y - camera.position.y - 7 * Math.sin(vector.ya)) +
+            (obj1[i1].z - camera.position.z - 7 * Math.cos(vector.xa) * Math.cos(vector.ya)) *
+            (obj1[i1].z - camera.position.z - 7 * Math.cos(vector.xa) * Math.cos(vector.ya)),
             1 / 2) < 5) {
           if (!scene.getObjectById(obj1[i1].obj.id)) {
             scene.add(obj1[i1].obj)
