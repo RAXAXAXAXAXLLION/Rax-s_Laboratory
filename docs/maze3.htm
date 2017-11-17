@@ -10,11 +10,8 @@ vector.xa-=0.01*e.movementX
 vector.ya-=0.01*e.movementY
 }}
 onkeydown=onkeyup=function(e){k[e.keyCode]=e.type=="keydown"}
-document.title="Infinite maze."
-document.write(".")
-document.body.innerHTML=""
 document.body.style.backgroundColor="black"
-document.body.style.margin="0 0 0 0"
+document.body.style.margin="0"
 scene=new THREE.Scene()
 camera=new THREE.PerspectiveCamera(75,1,0.1,16);vector={xs:0,ys:0,zs:0,xa:0,ya:0}
 camera.position.set(0,0,0);renderer=new THREE.WebGLRenderer()
