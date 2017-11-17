@@ -6,8 +6,8 @@ k=[]
 onmousedown=()=>{document.body.requestPointerLock()}
 onmousemove=(e)=>{
 if(document.pointerLockElement===document.body){
-vector.xa-=0.01*e.movementX
-vector.ya-=0.01*e.movementY
+vector.xa-=0.001*e.movementX
+vector.ya-=0.001*e.movementY
 }}
 onkeydown=onkeyup=function(e){k[e.keyCode]=e.type=="keydown"}
 document.body.style.backgroundColor="black"
