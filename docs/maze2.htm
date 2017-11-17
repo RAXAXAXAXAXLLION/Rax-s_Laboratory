@@ -12,7 +12,7 @@
         vector.ya -= 0.01 * e.movementY
       }
     }
-    onkeydown = onkeyup = function(e) {
+    onkeydown = onkeyup = (e) => {
       k[e.keyCode] = e.type == "keydown"
     }
     document.title = "Infinite maze."
