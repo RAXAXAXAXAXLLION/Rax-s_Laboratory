@@ -9,7 +9,7 @@ if(document.pointerLockElement===document.body){
 vector.xa-=0.01*e.movementX
 vector.ya-=0.01*e.movementY
 }}
-onkeydown=onkeyup=function(e){k[e.keyCode]=e.type=="keydown"}
+onkeydown=onkeyup=(e)=>{k[e.keyCode]=e.type=="keydown"}
 document.body.style.backgroundColor="black"
 document.body.style.margin="0"
 scene=new THREE.Scene()
