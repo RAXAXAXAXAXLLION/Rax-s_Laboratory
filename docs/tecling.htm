@@ -1,0 +1,30 @@
+<script>
+setTimeout(()=>{
+document.body.style.margin="0"
+c=document.createElement("canvas")
+document.body.appendChild(c)
+ctx=c.getContext("2d")
+onkeydown=(e)=>{
+if(e.keyCode==49){if(1100<usd){usd-=1100;ghs++}}
+}
+usd=0
+btc=0
+ghs=0
+setInterval(()=>{
+usd+=10
+if(Math.random()<0.001){btc+=ghs}
+c.width=innerWidth
+c.height=innerHeight
+ctx.fillRect(0,0,c.width,c.height)
+ctx.font="32px Arial"
+ctx.fillStyle="rgba(255,200,0,1)"
+ctx.fillText("฿:"+btc,8,32)
+ctx.font="32px Arial"
+ctx.fillStyle="rgba(0,255,0,1)"
+ctx.fillText("$:"+usd,8,32*2)
+ctx.font="32px Arial"
+ctx.fillStyle="rgba(100,100,100,1)"
+ctx.fillText("GHS:"+ghs,8,32*3)
+},1)
+},1)
+</script>
