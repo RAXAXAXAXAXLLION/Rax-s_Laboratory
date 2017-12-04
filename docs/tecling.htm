@@ -6,6 +6,7 @@ document.body.appendChild(c)
 ctx=c.getContext("2d")
 onkeydown=(e)=>{
 if(e.keyCode==49){if(1100<usd){usd-=1100;ghs++}}
+if(e.keyCode==50){if(1<btc){btc--;usd+=9000}}
 }
 usd=0
 btc=0
