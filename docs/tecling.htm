@@ -11,6 +11,9 @@ if(e.keyCode==50){if(1<btc){btc--;usd+=9000}}
 usd=0
 btc=0
 ghs=0
+magnets=0
+charge=0
+battery=0
 setInterval(()=>{
 if(Math.random()<0.1){usd++}
 if(Math.random()<0.001){btc+=ghs}
@@ -26,6 +29,11 @@ ctx.fillText("$:"+usd,8,32*2)
 ctx.font="32px Arial"
 ctx.fillStyle="rgba(100,100,100,1)"
 ctx.fillText("GHS:"+ghs,8,32*3)
+ctx.font="16px Arial"
+ctx.fillStyle="rgba(100,100,100,1)"
+ctx.fillText("Generating current with "+magnets+
+" magnets powering a battery with a charge equal to "+
+charge+"/"+battery+".",8,32*4)
 },1)
 },1)
 </script>
