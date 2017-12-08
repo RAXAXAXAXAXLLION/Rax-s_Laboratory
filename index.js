@@ -36,4 +36,8 @@ setInterval(()=>{
 for(i in obj){
 obj[i].x+=obj[i].xs
 obj[i].y+=obj[i].ys
+if(obj[i].x+32<){obj[i].x=innerWidth+32}
+if(innerWidth+32<obj[i].x){obj[i].x=-32}
+if(obj[i].y+32<){obj[i].y=innerHeight+32}
+if(innerHeight+32<obj[i].y){obj[i].y=-32}
 }},1)
