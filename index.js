@@ -30,7 +30,7 @@ socket.emit("msg",{script:'c.height=innerHeight'})
 for(i in obj){
 socket.emit("msg",{script:'ctx.fillStyle="rgba(0,0,0,1)"'})
 socket.emit("msg",{script:'ctx.fillRect('+obj[i].x+','+obj[i].y+',32,32)'})
-}},100)
+}},50)
 })
 setInterval(()=>{
 for(i in obj){
