@@ -16,13 +16,13 @@ socket.emit("msg",{script:'c=document.createElement("canvas")'})
 socket.emit("msg",{script:'document.body.appendChild(c)'})
 socket.emit("msg",{script:'ctx=c.getContext("2d")'})
 socket.emit("msg",{script:'onkeydown=onkeyup=(e)=>{k[e.keyCode]=e.type=="keydown"}'})
-socket.emit("msg",{script:'setInterval(()=>{for(i=0;i<400;i++){if(k[i]){io().emit("key",{code:i})}}},25)'},1)
+socket.emit("msg",{script:'setInterval(()=>{for(i=0;i<400;i++){if(k[i]){socket.emit("key",{code:i})}}},25)'},1)
 socket.on("key",(e)=>{
 console.log(e.code+" from "+socket.i)
-if(e.code==37){obj[w.i].xs-=0.1}
-if(e.code==38){obj[w.i].ys-=0.1}
-if(e.code==39){obj[w.i].xs+=0.1}
-if(e.code==40){obj[w.i].ys+=0.1}
+if(e.code==37){obj[socket.i].xs-=0.1}
+if(e.code==38){obj[socket.i].ys-=0.1}
+if(e.code==39){obj[socket.i].xs+=0.1}
+if(e.code==40){obj[socket.i].ys+=0.1}
 })
 setInterval(()=>{
 socket.emit("msg",{script:'c.width=innerWidth'})
