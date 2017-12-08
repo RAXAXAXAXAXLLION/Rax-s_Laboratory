@@ -19,20 +19,20 @@ socket.emit("msg",{script:'onkeydown=onkeyup=(e)=>{k[e.keyCode]=e.type=="keydown
 socket.emit("msg",{script:'setInterval(()=>{for(i=0;i<400;i++){if(k[i]){socket.emit("key",{code:i})}}},25)'},1)
 socket.on("key",(e)=>{
 console.log(e.code+" from "+socket.i)
-if(e.code==37){obj[socket.i].xs-=0.1}
-if(e.code==38){obj[socket.i].ys-=0.1}
-if(e.code==39){obj[socket.i].xs+=0.1}
-if(e.code==40){obj[socket.i].ys+=0.1}
+if(e.code==37){obj[socket.i].xs-=0.01}
+if(e.code==38){obj[socket.i].ys-=0.01}
+if(e.code==39){obj[socket.i].xs+=0.01}
+if(e.code==40){obj[socket.i].ys+=0.01}
 })
 setInterval(()=>{
 socket.emit("msg",{script:'c.width=innerWidth'})
 socket.emit("msg",{script:'c.height=innerHeight'})
 for(i in obj){
 socket.emit("msg",{script:'ctx.fillRect('+obj[i].x+','+obj[i].y+',32,32)'})
-}},25)
+}},1)
 })
 setInterval(()=>{
 for(i in obj){
 obj[i].x+=obj[i].xs
 obj[i].y+=obj[i].ys
-}},25)
+}},1)
