@@ -30,8 +30,8 @@ for(i in obj){
 socket.emit("msg",{script:'ctx.fillStyle="rgba(250,200,150,1)"'})
 socket.emit("msg",{script:'ctx.fillRect('+eval(obj[i].x-obj[socket.i].x)+'+innerWidth/2-16,'+eval(obj[i].y-obj[socket.i].y)+'+innerHeight/2-16,32,32)'})
 socket.emit("msg",{script:'ctx.lineWidth="4"'})
-socket.emit("msg",{script:'ctx.fillStyle="rgba(200,175,150,1)"'})
-socket.emit("msg",{script:'ctx.fillRect('+eval(obj[i].x-obj[socket.i].x)+'+innerWidth/2-16,'+eval(obj[i].y-obj[socket.i].y)+'+innerHeight/2-16,32,32)'})
+socket.emit("msg",{script:'ctx.strokeStyle="rgba(200,175,150,1)"'})
+socket.emit("msg",{script:'ctx.strokeRect('+eval(obj[i].x-obj[socket.i].x)+'+innerWidth/2-16,'+eval(obj[i].y-obj[socket.i].y)+'+innerHeight/2-16,32,32)'})
 }},20)
 })
 setInterval(()=>{
