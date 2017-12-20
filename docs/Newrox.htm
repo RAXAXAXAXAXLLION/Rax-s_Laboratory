@@ -4,8 +4,10 @@ x={}
 y={}
 x1=document.createElement("input")
 document.body.appendChild(x1)
+x1.type="number"
 x2=document.createElement("input")
 document.body.appendChild(x2)
+x2.type="number"
 x2.disabled=true
 document.body.appendChild(document.createElement("br"))
 add=document.createElement("input")
@@ -19,9 +21,11 @@ add.onclick=()=>{
 i1=Math.random()
 x[i1]=document.createElement("input")
 document.body.appendChild(x[i1])
+x[i1].type="number"
 i2=Math.random()
 y[i2]=document.createElement("input")
 document.body.appendChild(y[i2])
+y[i2].type="number"
 document.body.appendChild(document.createElement("br"))
 }
 setInterval(()=>{
