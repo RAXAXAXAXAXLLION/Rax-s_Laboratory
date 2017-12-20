@@ -1,0 +1,126 @@
+<script>
+k=[]
+time=0
+size=640
+onkeydown=onkeyup=function(e){k[e.keyCode]=e.type=="keydown"}
+document.write('<canvas id="c"></canvas')
+document.body.style.backgroundColor="black"
+document.body.style.margin="0 0 0 0"
+ctx=c.getContext("2d")
+setInterval(function(){
+time++
+if(time%1000==0){g(2,size/2,size/2)}
+if(time%4000==0){g(3,size/2,size/2)}
+if(time%16000==0){g(4,size/2,size/2)}
+c.width=innerWidth
+c.height=innerHeight
+ctx.lineWidth="4"
+ctx.strokeStyle="rgba(100,100,100,1)"
+ctx.strokeRect(0,0,size,size)
+ctx.strokeRect(size/2-16,size/2-16,32,32)
+for(id1 in obj1){
+ctx.fillStyle="rgba(0,255,0,"+obj1[id1].hp+")"
+ctx.fillRect(obj1[id1].x-16,obj1[id1].y-16,32,32)
+ctx.lineWidth="4"
+ctx.strokeStyle="rgba(0,127,0,1)"
+ctx.strokeRect(obj1[id1].x-16,obj1[id1].y-16,32,32)
+obj1[id1].x+=obj1[id1].xs
+obj1[id1].y+=obj1[id1].ys
+obj1[id1].xs=obj1[id1].xs*24/25
+obj1[id1].ys=obj1[id1].ys*24/25
+if(0<obj1[id1].hp){
+if(k[37]){obj1[id1].xs-=0.05}
+if(k[38]){obj1[id1].ys-=0.05}
+if(k[39]){obj1[id1].xs+=0.05}
+if(k[40]){obj1[id1].ys+=0.05}
+if(obj1[id1].hp<1){if(0<obj1[id1].hp){obj1[id1].hp+=0.0001}}}
+if(obj1[id1].x<0){obj1[id1].xs+=1}
+if(obj1[id1].y<0){obj1[id1].ys+=1}
+if(obj1[id1].x>size){obj1[id1].xs-=1}
+if(obj1[id1].y>size){obj1[id1].ys-=1}
+}
+for(id2 in obj2){
+ctx.fillStyle="rgba(255,0,0,1)"
+ctx.fillRect(obj2[id2].x-16,obj2[id2].y-16,32,32)
+ctx.lineWidth="4"
+ctx.strokeStyle="rgba(127,0,0,1)"
+ctx.strokeRect(obj2[id2].x-16,obj2[id2].y-16,32,32)
+obj2[id2].x+=obj2[id2].xs
+obj2[id2].y+=obj2[id2].ys
+if(obj2[id2].x<0){obj2[id2].xs+=1}
+if(obj2[id2].y<0){obj2[id2].ys+=1}
+if(obj2[id2].x>size){obj2[id2].xs-=1}
+if(obj2[id2].y>size){obj2[id2].ys-=1}
+}
+for(id3 in obj3){
+ctx.fillStyle="rgba(255,255,0,1)"
+ctx.fillRect(obj3[id3].x-16,obj3[id3].y-16,32,32)
+ctx.lineWidth="4"
+ctx.strokeStyle="rgba(127,127,0,1)"
+ctx.strokeRect(obj3[id3].x-16,obj3[id3].y-16,32,32)
+obj3[id3].x+=obj3[id3].xs
+obj3[id3].y+=obj3[id3].ys
+if(obj3[id3].x<0){obj3[id3].xs+=1}
+if(obj3[id3].y<0){obj3[id3].ys+=1}
+if(obj3[id3].x>size){obj3[id3].xs-=1}
+if(obj3[id3].y>size){obj3[id3].ys-=1}
+}
+for(id4 in obj4){
+ctx.fillStyle="rgba(0,0,0,1)"
+ctx.fillRect(obj4[id4].x-16,obj4[id4].y-16,32,32)
+ctx.lineWidth="4"
+ctx.strokeStyle="rgba(0,0,40,1)"
+ctx.strokeRect(obj4[id4].x-16,obj4[id4].y-16,32,32)
+obj4[id4].x+=obj4[id4].xs
+obj4[id4].y+=obj4[id4].ys
+if(obj4[id4].x<0){obj4[id4].xs+=1}
+if(obj4[id4].y<0){obj4[id4].ys+=1}
+if(obj4[id4].x>size){obj4[id4].xs-=1}
+if(obj4[id4].y>size){obj4[id4].ys-=1}
+}
+for(id1 in obj1){for(id2 in obj2){
+if(obj1[id1].x-16<obj2[id2].x+16){
+if(obj1[id1].y-16<obj2[id2].y+16){
+if(obj1[id1].x+16>obj2[id2].x-16){
+if(obj1[id1].y+16>obj2[id2].y-16){
+obj1[id1].hp-=0.01
+}}}}}}
+for(id1 in obj1){for(id3 in obj3){
+obj1[id1].xs-=50*(obj3[id3].x-obj1[id1].x)/Math.pow((obj3[id3].x-obj1[id1].x)*(obj3[id3].x-obj1[id1].x)+(obj3[id3].y-obj1[id1].y)*(obj3[id3].y-obj1[id1].y),3/2)
+obj1[id1].ys-=50*(obj3[id3].y-obj1[id1].y)/Math.pow((obj3[id3].x-obj1[id1].x)*(obj3[id3].x-obj1[id1].x)+(obj3[id3].y-obj1[id1].y)*(obj3[id3].y-obj1[id1].y),3/2)
+}}
+for(id2 in obj2){for(id3 in obj3){
+obj2[id2].xs-=(obj3[id3].x-obj2[id2].x)/Math.pow((obj3[id3].x-obj2[id2].x)*(obj3[id3].x-obj2[id2].x)+(obj3[id3].y-obj2[id2].y)*(obj3[id3].y-obj2[id2].y),3/2)
+obj2[id2].ys-=(obj3[id3].y-obj2[id2].y)/Math.pow((obj3[id3].x-obj2[id2].x)*(obj3[id3].x-obj2[id2].x)+(obj3[id3].y-obj2[id2].y)*(obj3[id3].y-obj2[id2].y),3/2)
+}}
+for(id1 in obj1){for(id4 in obj4){
+if(obj1[id1].x-16<obj4[id4].x+16){
+if(obj1[id1].y-16<obj4[id4].y+16){
+if(obj1[id1].x+16>obj4[id4].x-16){
+if(obj1[id1].y+16>obj4[id4].y-16){
+obj1[id1].hp-=0.1
+}}}}
+obj1[id1].xs+=250*(obj4[id4].x-obj1[id1].x)/Math.pow((obj4[id4].x-obj1[id1].x)*(obj4[id4].x-obj1[id1].x)+(obj4[id4].y-obj1[id1].y)*(obj4[id4].y-obj1[id1].y),3/2)
+obj1[id1].ys+=250*(obj4[id4].y-obj1[id1].y)/Math.pow((obj4[id4].x-obj1[id1].x)*(obj4[id4].x-obj1[id1].x)+(obj4[id4].y-obj1[id1].y)*(obj4[id4].y-obj1[id1].y),3/2)
+}}
+for(id2 in obj2){for(id4 in obj4){
+obj2[id2].xs+=250*(obj3[id3].x-obj2[id2].x)/Math.pow((obj4[id4].x-obj2[id2].x)*(obj4[id4].x-obj2[id2].x)+(obj4[id4].y-obj2[id2].y)*(obj4[id4].y-obj2[id2].y),3/2)
+obj2[id2].ys+=250*(obj3[id3].y-obj2[id2].y)/Math.pow((obj4[id4].x-obj2[id2].x)*(obj4[id4].x-obj2[id2].x)+(obj4[id4].y-obj2[id2].y)*(obj4[id4].y-obj2[id2].y),3/2)
+}}
+for(id3 in obj3){for(id4 in obj4){
+obj2[id2].xs+=250*(obj3[id3].x-obj2[id2].x)/Math.pow((obj4[id4].x-obj3[id3].x)*(obj4[id4].x-obj3[id3].x)+(obj4[id4].y-obj3[id3].y)*(obj4[id4].y-obj3[id3].y),3/2)
+obj2[id2].ys+=250*(obj3[id3].y-obj2[id2].y)/Math.pow((obj4[id4].x-obj3[id3].x)*(obj4[id4].x-obj3[id3].x)+(obj4[id4].y-obj3[id3].y)*(obj4[id4].y-obj3[id3].y),3/2)
+}}
+},1)
+obj1={};id1=0
+obj2={};id2=0
+obj3={};id3=0
+obj4={};id4=0
+g=function(obj,x,y){
+if(obj==1){id1++;obj1[id1]={x:x,y:y,xs:0,ys:0,hp:1}}
+if(obj==2){id2++;obj2[id2]={x:x,y:y,xs:Math.random()*2-1,ys:Math.random()*2-1}}
+if(obj==3){id3++;obj3[id3]={x:x,y:y,xs:Math.random()*2-1,ys:Math.random()*2-1}}
+if(obj==4){id4++;obj4[id4]={x:x,y:y,xs:Math.random()*2-1,ys:Math.random()*2-1}}
+}
+g(1,32,32)
+</script>
