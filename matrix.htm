@@ -1,0 +1,28 @@
+<script>
+setTimeout(()=>{
+m={}
+i0=document.createElement("input")
+document.body.appendChild(i0)
+i0.value="Add data."
+i0.type="button"
+o=document.createElement("input")
+document.body.appendChild(o)
+o.disabled=true
+o.type="number"
+document.body.appendChild(document.createElement("br"))
+i0.onclick=()=>{
+i1=Math.random()
+m[i1]=document.createElement("input")
+document.body.appendChild(m[i1])
+document.body.appendChild(document.createElement("br"))
+m[i1].type="number"
+m[i1].value=0
+}
+setInterval(()=>{
+o.value=0
+for(i1 in m){
+o.value=eval(eval(o.value)+eval(m[i1].value))
+}
+},1)
+},1)
+</script>
