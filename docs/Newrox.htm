@@ -1,45 +1,36 @@
 <script>
 setTimeout(()=>{
-m={}
-i1=document.createElement("INPUT")
-i1.setAttribute("type","button")
-i1.setAttribute("value","<<<")
-//i1.setAttribute("disabled",true)
-document.body.appendChild(i1)
-i2=document.createElement("INPUT")
-i2.setAttribute("type","checkbox")
-//i2.setAttribute("disabled",true)
-document.body.appendChild(i2)
-document.body.appendChild(
-document.createElement("br"))
-o1=document.createElement("INPUT")
-o1.setAttribute("type","button")
-o1.setAttribute("value",">>>")
-o1.setAttribute("disabled",true)
-document.body.appendChild(o1)
-o2=document.createElement("INPUT")
-o2.setAttribute("type","checkbox")
-o2.setAttribute("disabled",true)
-document.body.appendChild(o2)
-document.body.appendChild(
-document.createElement("br"))
-c1=document.createElement("INPUT")
-c1.setAttribute("type","button")
-c1.setAttribute("value","???")
-c1.setAttribute("disabled",true)
-document.body.appendChild(c1)
-c2=document.createElement("INPUT")
-c2.setAttribute("type","checkbox")
-//c2.setAttribute("disabled",true)
-document.body.appendChild(c2)
-i1.onclick=()=>{
-if(i2.checked==true){
-m[Math.random()]={check:true}
-}else{
-m[Math.random()]={check:false,confirmed:true}}
-for(i in m){if(m[i].check==true){
-o2.checked=true
-}}
+x={}
+y={}
+x1=document.createElement("input")
+document.body.appendChild(x1)
+x2=document.createElement("input")
+document.body.appendChild(x2)
+x2.disabled=true
+document.body.appendChild(document.createElement("br"))
+add=document.createElement("input")
+add.type="button"
+add.value="Add data."+
+"                                     "+
+"                                     "
+document.body.appendChild(add)
+document.body.appendChild(document.createElement("br"))
+add.onclick=()=>{
+i1=Math.random()
+x[i1]=document.createElement("input")
+document.body.appendChild(x[i1])
+i2=Math.random()
+y[i2]=document.createElement("input")
+document.body.appendChild(y[i2])
+document.body.appendChild(document.createElement("br"))
 }
+setInterval(()=>{
+x2.value=x1.value
+for(i in x){
+for(j in y){
+x2.value*=y[j].value/x[i].value
+}
+}
+},1)
 },1)
 </script>
