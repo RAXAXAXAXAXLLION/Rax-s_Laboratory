@@ -1,0 +1,90 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/87/three.js"></script><script>
+document.title="3D game n1."
+document.write(".")
+document.body.innerHTML=""
+document.body.style.backgroundColor="black"
+document.body.style.margin="0 0 0 0"
+document.body.innerHTML=""
+scene=new THREE.Scene()
+camera=new THREE.PerspectiveCamera(75,window.innerWidth/window.innerHeight,1,10000)
+renderer=new THREE.WebGLRenderer()
+document.body.appendChild(renderer.domElement)
+k={}
+cube={}
+onkeydown=onkeyup=(e)=>{k[e.keyCode]=e.type=="keydown"}
+scene.add(cube)
+camera.position.z=10
+function render(){
+renderer.setSize(innerWidth,innerHeight)
+camera.aspect=innerWidth/innerHeight
+camera.updateProjectionMatrix()
+requestAnimationFrame(render)
+renderer.render(scene,camera)
+}
+render()
+player=new THREE.Mesh(new THREE.BoxGeometry(1,1,1),new THREE.MeshLambertMaterial({color:"rgb(0,255,0)"}))
+player.position.set(0,0,0)
+scene.add(player)
+player.xs=0
+player.ys=0
+player.zs=0
+player.hp=1
+player2=new THREE.Mesh(new THREE.BoxGeometry(0.5,0.5,0.5),new THREE.MeshLambertMaterial({color:"rgb(250,200,150)"}))
+player2.position.set(0,0,0)
+scene.add(player2)
+light=new THREE.PointLight(0xffffff,1,100)
+scene.add(light)
+setInterval(()=>{
+player.material.needsUpdate=true
+player.material.transparent=true
+player.material.opacity=player.hp
+light.position.set(camera.position.x,camera.position.y,camera.position.z)
+if(0<player.hp){
+if(k[37]){player.xs-=0.0002}
+if(k[38]){player.ys+=0.0002}
+if(k[39]){player.xs+=0.0002}
+if(k[40]){player.ys-=0.0002}}
+player2.position.set(player.position.x,player.position.y,player.position.z)
+player.position.x+=player.xs
+player.position.y+=player.ys
+player.position.z+=player.zs
+player.xs*=0.99
+player.ys*=0.99
+player.zs*=0.99
+if(player.position.x<-15){player.position.x=15}
+if(player.position.x>15){player.position.x=-15}
+if(player.position.y<-10){player.position.y=10}
+if(player.position.y>10){player.position.y=-10}
+for(i1 in cube){
+cube[i].l.position.set(cube[i].s.position.x,cube[i].s.position.y,cube[i].s.position.z)
+cube[i1].s.position.x+=cube[i1].xs
+cube[i1].s.position.y+=cube[i1].ys
+cube[i1].s.position.z+=cube[i1].zs
+if(cube[i1].s.position.x<-15){cube[i1].s.position.x=15}
+if(cube[i1].s.position.x>15){cube[i1].s.position.x=-15}
+if(cube[i1].s.position.y<-10){cube[i1].s.position.y=10}
+if(cube[i1].s.position.y>10){cube[i1].s.position.y=-10}
+if(player.position.x+1>cube[i1].s.position.x-1){
+if(player.position.x-1<cube[i1].s.position.x+1){
+if(player.position.y+1>cube[i1].s.position.y-1){
+if(player.position.y-1<cube[i1].s.position.y+1){
+if(player.position.z+1>cube[i1].s.position.z-1){
+if(player.position.z-1<cube[i1].s.position.z+1){
+if(0<player.hp){player.hp-=0.001}
+}}}}}}
+}
+},1)
+g=(x,y,z,xs,ys,zs)=>{
+i=Math.random()
+cube[i]={s:new THREE.Mesh(new THREE.BoxGeometry(1,1,1),new THREE.MeshBasicMaterial({color:"rgb(255,0,0)"})),l:new THREE.PointLight(0xffffff,1,100)}
+cube[i].s.position.set(x,y,z)
+scene.add(cube[i].s)
+cube[i].xs=xs
+cube[i].ys=ys
+cube[i].zs=zs
+scene.add(cube[i].l)
+}
+setInterval(()=>{
+g(0,10,0,Math.random()*0.02-0.01,Math.random()*0.02-0.01,0)
+},10000)
+</script>
