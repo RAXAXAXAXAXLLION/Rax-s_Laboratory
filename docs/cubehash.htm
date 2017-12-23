@@ -1,0 +1,69 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/87/three.js"></script><script>
+document.title="cubehash.htm"
+document.write(".")
+document.body.innerHTML=""
+document.body.style.backgroundColor="black"
+document.body.style.margin="0 0 0 0"
+document.body.innerHTML=""
+scene=new THREE.Scene()
+camera=new THREE.PerspectiveCamera(75,window.innerWidth/window.innerHeight,0.1,10000)
+renderer=new THREE.WebGLRenderer()
+document.body.appendChild(renderer.domElement)
+k={}
+cube={}
+onkeydown=onkeyup=(e)=>{k[e.keyCode]=e.type=="keydown"}
+scene.add(cube)
+light=new THREE.PointLight(0xffffff,1,100)
+scene.add(light)
+light.position.z=10
+camera.position.z=10
+render=()=>{
+renderer.setSize(innerWidth,innerHeight)
+camera.aspect=innerWidth/innerHeight
+camera.updateProjectionMatrix()
+requestAnimationFrame(render)
+renderer.render(scene,camera)
+}
+render()
+g=(x,y,z)=>{
+i=Math.random()
+if(i<1/3){cube[i]={s:new THREE.Mesh(new THREE.BoxGeometry(1,1,1),new THREE.MeshLambertMaterial({color:"rgb(0,255,0)"}))}}else{
+if(i<2/3){cube[i]={s:new THREE.Mesh(new THREE.BoxGeometry(1,1,1),new THREE.MeshLambertMaterial({color:"rgb(255,0,0)"}))}}else{
+cube[i]={s:new THREE.Mesh(new THREE.BoxGeometry(1,1,1),new THREE.MeshLambertMaterial({color:"rgb(0,100,255)"}))}}}
+cube[i].s.position.set(x,y,z)
+scene.add(cube[i].s)
+}
+for(x=-16;x<16;x++){
+for(y=-16;y<16;y++){
+for(z=-8;z<32;z++){
+if(Math.random()<0.05){
+g(x,y,z)
+}}}}
+setTimeout(()=>{
+money=0
+processors=1
+setInterval(()=>{
+money+=eval(processors)
+i1.value="Ð:"+eval(money)
+i2.value="ghs:"+eval(processors)
+},100)
+i3.onclick=()=>{
+if(3000<money){
+processors++
+money-=50
+}}
+},1)
+</script>
+<div style="position: absolute; left: 0px; top: 0px; width:1400px; height:1px; background-color: rgb(0,0,0); color:rgb(255,255,255)">
+<font size="7">
+Deposit dogecoins into your account balance with this address:<br>
+DMfUAHut6tYdLQ63bNuvNBRMRFiuFNE7V3<br>
+Your account balance:<br>
+<input id="i1"value="Ð:0"disabled="true"size="70"></input><br>
+Your external processors:<br>
+<input id="i2"disabled="true"size="70"></input><input id="i3"value="Add 1 for 3000Ð."type="button"></input><br>
+Withdraw your account balance here:<br>
+<input id="i4"size="70"></input><input id="i5"type="button"value="Add to your Wallet."disabled="true"></input>
+</font>
+</div>
+<style>input { font-size: 30px; }</style>
