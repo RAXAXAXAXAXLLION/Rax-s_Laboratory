@@ -46,33 +46,11 @@ setInterval(()=>{
 money+=eval(processors)
 i1.value="Ð:"+eval(money)
 i2.value="ghs:"+eval(processors)
-},100)
-i3.onclick=()=>{
 if(3000<money){
 processors++
 money-=3000
-}}
-i4.onclick=()=>{
-if(30000<money){
-processors+=10
-money-=30000
-}}
-i5.onclick=()=>{
-if(300000<money){
-processors+=100
-money-=300000
-}}
-i6.onclick=()=>{
-if(3000000<money){
-processors+=1000
-money-=3000000
-}}
-i7.onclick=()=>{
-if(30000000<money){
-processors+=10000
-money-=30000000
-}}
-
+}
+},100)
 },1)
 </script>
 <div style="position: absolute; left: 0px; top: 0px; width:1400px; height:1px; background-color: rgb(0,0,0); color:rgb(255,255,255)">
@@ -82,12 +60,7 @@ DMfUAHut6tYdLQ63bNuvNBRMRFiuFNE7V3<br>
 Your account balance:<br>
 <input id="i1"value="Ð:0"disabled="true"size="70"></input><br>
 Your external processors:<br>
-<input id="i2"disabled="true"size="70"></input>
-<input id="i3"value="Add 1 for 3 000Ð."type="button"><br>
-<input id="i4"value="Add 10 for 30 000Ð."type="button">
-<input id="i5"value="Add 100 for 300 000Ð."type="button">
-<input id="i6"value="Add 1000 for 3 million Ð."type="button"><br>
-<input id="i7"value="Add 10000 for 30 million Ð."type="button"><br>
+<input id="i2"disabled="true"size="70"></input><br>
 Withdraw your account balance here:<br>
 <input size="70"></input><input type="button"value="Add to your Wallet."disabled="true"></input>
 </font>
