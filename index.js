@@ -6,9 +6,7 @@ o.write('<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/soc
 o.write('<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/88/three.js"></script>')
 o.write('<script>socket=io();socket.on("out",(e)=>{eval(e.script)})</script>')
 o.end()
-}).listen("3000",()=>{
-console.log("Server listening!")
-})
+}).listen(process.env.PORT||3000,()=>{console.log("Server listening!")})
 ).on("connection",(socket)=>{
 socket.id=Math.random()
 obj[socket.id]={x:Math.floor(Math.random()*4-2)*2,y:Math.floor(Math.random()*4-2)*2,z:0,xs:0,ys:0,zs:0,xm:2,ym:2,zm:3,type:"player"}
