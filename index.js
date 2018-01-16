@@ -191,13 +191,9 @@ obj[i1].zs-=0.00001}
 g=(x,y,z,xs,ys,zs,xm,ym,zm,type)=>{
 obj[Math.random()]={x:x,y:y,z:z,xs:xs,ys:ys,zs:zs,xm:xm,ym:ym,zm:zm,type:type}
 }
-for(x=-3;x<3;x++){
-for(y=-3;y<3;y++){
-g(x,y,-1,0,0,0,1,1,1,"dirt")
-}}
-for(x=-2;x<2;x++){
-for(y=-2;y<2;y++){
-for(z=-4;z<-2;z++){
+for(x=-1;x<1;x++){
+for(y=-1;y<1;y++){
+for(z=-1;z<-1;z++){
 g(x,y,-2,0,0,0,1,1,1,"dirt")
 }}}
 g(0,0,-2,0,0,0,1000000,1000000,0.1,"water")
