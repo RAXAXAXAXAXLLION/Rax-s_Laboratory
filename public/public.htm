@@ -1,0 +1,23 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.js"></script><script>
+id=0
+obj={}
+img={}
+img.mario=document.createElement("img")
+img.mario.src="/public/mario.png"
+socket=io()
+socket.on("msg",(e)=>{
+obj=e.data
+id=e.id
+})
+setTimeout(()=>{
+document.body.style.margin="0"
+c=document.createElement("canvas")
+document.body.appendChild(c)
+ctx=c.getContext("2d")
+setInterval(()=>{
+c.width=innerWidth
+c.height=innerHeight
+ctx.drawImage(img.mario,0,0)
+},1)
+},1)
+</script>
