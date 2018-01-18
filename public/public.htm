@@ -4,6 +4,8 @@ obj={}
 img={}
 img.mario=document.createElement("img")
 img.mario.src="/public/mario.png"
+img.bowser=document.createElement("img")
+img.bowser.src="/public/bowser.png"
 socket=io()
 socket.on("msg",(e)=>{
 obj=e.data
@@ -17,7 +19,7 @@ ctx=c.getContext("2d")
 setInterval(()=>{
 c.width=innerWidth
 c.height=innerHeight
-ctx.drawImage(img.mario,0,0)
+ctx.drawImage(img.bowser,0,0)
 },1)
 },1)
 </script>
