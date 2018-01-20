@@ -2,6 +2,7 @@
 <script src="https://apis.google.com/js/platform.js" async defer></script>
 <meta name="google-signin-client_id" content="512785158374-3s3s0mpdpsjii0vfti5i6bnmh4csr3aj.apps.googleusercontent.com">
 <div style="position: absolute; left: 0px; top: 0px"class="g-signin2" data-onsuccess="onSignIn"></div>
+<div style="position: absolute; left: 0px; top: 32px"id="name"></div>
 <script>
 function onSignIn(googleUser) {
 var profile = googleUser.getBasicProfile();
@@ -9,7 +10,7 @@ console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID
 console.log('Name: ' + profile.getName());
 console.log('Image URL: ' + profile.getImageUrl());
 console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
-document.write(profile.getName())
+name.write(profile.getName())
 }
 setTimeout(()=>{
 document.title="Cubehash"
