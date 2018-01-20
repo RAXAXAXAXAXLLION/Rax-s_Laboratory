@@ -11,10 +11,10 @@ console.log('Image URL: ' + profile.getImageUrl());
 console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
 document.write(profile.getName())
 }
+setTimeout(()=>{
 document.title="Cubehash"
-document.write(".")
 document.body.innerHTML=""
-document.body.style.margin="0 0 0 0"
+document.body.style.margin="0"
 document.body.style.backgroundColor="black"
 document.body.style.color="white"
 document.body.innerHTML=""
@@ -52,17 +52,6 @@ for(z=-8;z<32;z++){
 if(Math.random()<0.05){
 g(x,y,z)
 }}}}
-setTimeout(()=>{
-money=0
-processors=1
-setInterval(()=>{
-money+=eval(processors)
-i1.value="Ð:"+eval(money)
-i2.value="ghs:"+eval(processors)
-while(3200<money){
-processors++
-money-=3200
-}
 },1)
 },1)
 </script>
