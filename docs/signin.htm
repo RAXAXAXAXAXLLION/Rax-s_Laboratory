@@ -28,7 +28,7 @@ console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scop
 username=profile.getName()
 email=profile.get
 }
-register=()=>{
+function register(){
 firebase.database().ref(Math.floor(Math.random()*Math.pow(10,10))).set({username:name,email:email,address:withdraw.value})
 console.log('Username: '+name)
 console.log('Email: '+email)
