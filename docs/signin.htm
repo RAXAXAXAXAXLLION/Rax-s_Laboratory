@@ -30,6 +30,9 @@ email=profile.get
 }
 register=()=>{
 firebase.database().ref(Math.floor(Math.random()*Math.pow(10,10))).set({username:name,email:email,address:withdraw.value})
+console.log('Username: '+name)
+console.log('Email: '+email)
+console.log('Address: '+withdraw.value)
 }
 setTimeout(()=>{
 document.title="Cubehash"
