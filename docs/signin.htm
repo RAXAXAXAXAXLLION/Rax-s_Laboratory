@@ -1,10 +1,23 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/87/three.js"></script>
+<script src="https://www.gstatic.com/firebasejs/4.9.0/firebase.js"></script>
 <script src="https://apis.google.com/js/platform.js" async defer></script>
 <meta name="google-signin-client_id" content="512785158374-3s3s0mpdpsjii0vfti5i6bnmh4csr3aj.apps.googleusercontent.com">
 <div style="position: absolute; left: 0px; top: 0px"class="g-signin2" data-onsuccess="onSignIn"></div>
-<img style="position: absolute; left: 0px; top: 38px; font-size:26px"width="38"height="38"src="Dogecoin_Logo.png">
-<input style="position: absolute; left: 38px; top: 38px; font-size:26px"id="balance"readonly>
+<img style="position: absolute; left: 0px; top: 38px; font-size:26px"width="76"height="76"src="Dogecoin_Logo.png">
+<img style="position: absolute; left: 38px; top: 38px; font-size:26px"width="38"height="38"src="izquierda.png">
+<img style="position: absolute; left: 38px; top: 76px; font-size:26px"width="38"height="38"src="derecha.png">
+<input style="position: absolute; left: 114px; top: 38px; font-size:26px"id="deposit"readonly>
+<input style="position: absolute; left: 114px; top: 76px; font-size:26px"id="withdraw">
 <script>
+deposit.value="DBzgTPcJ5Qf2Cm6tjuxaDs2PBEDRpmm7Co"
+firebase.initializeApp({
+apiKey:"AIzaSyBoxgmRbzJXn6__VGDCJqot4BJY_dctJQA",
+authDomain:"megaultraeditor.firebaseapp.com",
+databaseURL:"https://megaultraeditor.firebaseio.com",
+projectId:"megaultraeditor",
+storageBucket:"megaultraeditor.appspot.com",
+messagingSenderId:"468305361070"
+})
 function onSignIn(googleUser) {
 var profile = googleUser.getBasicProfile();
 console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
@@ -51,9 +64,5 @@ for(z=-8;z<32;z++){
 if(Math.random()<0.05){
 g(x,y,z)
 }}}}
-balance.value=0
-setInterval(()=>{
-balance.value=eval(balance.value)+1
-},10000)
 },1)
 </script>
