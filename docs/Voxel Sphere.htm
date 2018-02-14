@@ -1,0 +1,49 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/87/three.js"></script><script>
+setTimeout(()=>{
+  document.title="My first Three.js app"
+  document.write(".")
+  document.body.innerHTML=""
+  document.body.style.backgroundColor="black"
+  document.body.style.margin="0 0 0 0"
+  document.body.innerHTML=""
+  scene=new THREE.Scene()
+  camera=new THREE.PerspectiveCamera(75,window.innerWidth/window.innerHeight,1,10000)
+  renderer=new THREE.WebGLRenderer()
+  document.body.appendChild(renderer.domElement)
+  cube={}
+  g=(x,y,z)=>{
+    i=Math.random()
+    cube[i]=new THREE.Mesh(new THREE.BoxGeometry(1,1,1),new THREE.MeshLambertMaterial({color:"rgb(0,127,255)"}))
+    cube[i].position.set(x,y,z)
+    scene.add(cube[i])
+  }
+  r=(x1,y1,z1,x2,y2,z2)=>{
+    return Math.pow((x1-x2)*(x1-x2)+(y1-y2)*(y1-y2)+(z1-z2)*(z1-z2),0.5)
+  }
+  for(x=-10;x<10;x++){
+    for(y=-10;y<10;y++){
+      for(z=-10;z<10;z++){
+        if(r(0,0,0,x,y,z)<10){
+          g(x,y,z)
+        }
+      }
+    }
+  }
+  light=new THREE.PointLight("rgb(255,255,255)",2,100)
+  scene.add(light)
+  camera.position.set(0,0,20)
+  function render(){
+    renderer.setSize(innerWidth,innerHeight)
+    camera.aspect=innerWidth/innerHeight
+    camera.updateProjectionMatrix()
+    requestAnimationFrame(render)
+    renderer.render(scene,camera)
+  }
+  render()
+  angle=0
+  setInterval(()=>{
+    angle+=0.05
+    light.position.set(Math.sin(angle)*20,20,Math.cos(angle)*20)
+  },1)
+},1)
+</script>
