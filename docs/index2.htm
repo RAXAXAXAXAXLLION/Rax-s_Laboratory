@@ -14,6 +14,8 @@ scene.add(cube)
 camera.position.z=2
 function render(){
 renderer.setSize(innerWidth,innerHeight)
+camera.aspect=innerWidth/innerHeight
+camera.updateProyectionMatrix()
 requestAnimationFrame(render)
 renderer.render(scene,camera)
 }
