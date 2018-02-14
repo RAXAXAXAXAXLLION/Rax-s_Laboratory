@@ -15,7 +15,7 @@ camera.position.z=2
 function render(){
 renderer.setSize(innerWidth,innerHeight)
 camera.aspect=innerWidth/innerHeight
-camera.updateProyectionMatrix()
+camera.updateProjectionMatrix()
 requestAnimationFrame(render)
 renderer.render(scene,camera)
 }
